@@ -1,0 +1,236 @@
+body {
+	font-family: sans-serif;
+	display: flex;
+	flex-flow: wrap;
+}
+
+article.playing-card {
+	flex-shrink: 0;
+    flex-grow: 0;
+	display: flex;
+	margin: 2em;
+	width: 630pt;
+	height: 880pt;
+	font-size: 24pt;
+	border-radius: 36pt;
+	padding: 6pt;
+	background: linear-gradient(127deg,#fce3ec,#ffe8cc);
+	flex-direction: column;
+}
+
+article.playing-card * {
+	flex-grow: 0;
+}
+
+article.playing-card header[data-type]>h1 {
+	font-size: 100%;
+	margin: 0;
+	display: inline-block;
+	flex-grow: 1;
+}
+
+article.playing-card header[data-type] {
+	border-top-left-radius: 30pt;
+	border-top-right-radius: 30pt;
+	display: flex;
+	flex-direction: row;
+	padding-left: 30pt;
+	height: 40pt;
+	line-height: 40pt;
+	font-weight: bold;
+	font-size: 110%;
+}
+
+article.playing-card>footer {
+	border-bottom-left-radius: 30pt;
+	border-bottom-right-radius: 30pt;
+	padding-left: 30pt;
+	background-color: DarkSlateGray;
+	height: 40pt;
+	line-height: 40pt;
+	color: Snow;
+	display: flex;
+	flex-direction: row;
+}
+
+article.playing-card>header[data-type]:after {
+	font-variant: small-caps;
+	font-size: 75%;
+	margin-right: 2em;
+	flex-grow: 0;
+}
+
+article.playing-card>header[data-type=action] {
+	background-color: Silver;
+}
+
+article.playing-card>header[data-type~=action][data-type~=weapon] {
+	background: linear-gradient(90deg,Silver,Silver,Orchid,Orchid);
+}
+
+article.playing-card>header[data-type=ability] {
+	background-color: PeachPuff;
+}
+
+article.playing-card>header[data-type=orison] {
+	background-color: MediumTurquoise;
+}
+
+article.playing-card>header[data-type=cantrip] {
+	background-color: CornflowerBlue;
+}
+
+article.playing-card>header[data-type=spell] {
+	background-color: DodgerBlue;
+}
+
+article.playing-card>header[data-type=class] {
+	background-color: Crimson;
+	color: Snow;
+}
+
+article.playing-card>header[data-type=defence] {
+	background-color: MediumSpringGreen;
+}
+
+article.playing-card>header[data-type=weapon] {
+	background-color: Orchid;
+}
+
+article.playing-card>header[data-type=item] {
+	background-color: Plum;
+}
+
+article.playing-card>header[data-type=action]:after {
+	content: 'Action';
+}
+
+article.playing-card>header[data-type=ability]:after {
+	content: 'Ability';
+}
+
+article.playing-card>header[data-type=class]:after {
+	content: 'Class';
+}
+
+article.playing-card>header[data-type=defence]:after {
+	content: 'Defence';
+}
+
+article.playing-card>header[data-type=orison]:after {
+	content: 'Orison';
+}
+
+article.playing-card>header[data-type=cantrip]:after {
+	content: 'Cantrip';
+}
+
+article.playing-card>header[data-type=spell]:after {
+	content: 'Spell';
+}
+
+article.playing-card>header[data-type=weapon]:after {
+	content: 'Weapon';
+}
+
+article.playing-card>header[data-type=item]:after {
+	content: 'Item';
+}
+
+article.playing-card>figure {
+	display: block;
+	height: 360pt;
+	background-color: rgba(255, 255, 255, 0.5);
+	padding: 0;
+	margin: 0;
+}
+
+article.playing-card figcaption>h2 {
+	font-size: 70%;
+	line-height: 2;
+	padding: 0 26pt;
+	margin: 0;
+	font-weight: 100;
+	display: block;
+	background-color: rgb(255, 255, 0, 0.2);
+	border-bottom-left-radius: 30pt;
+	border-bottom-right-radius: 30pt;
+}
+
+article.playing-card figcaption>h2:before {
+	content: 'Type: ';
+	font-weight: bold;
+}
+
+article.playing-card>section {
+	background-color: transparent;
+	padding: 0 26pt 6pt;
+	display: flex;
+	flex-direction: column;
+	line-height: 40pt;
+	flex-grow: 1;
+}
+
+
+/*
+section.type-subtype> {
+	display: flex;
+	flex-direction: row;
+}
+
+section.type-subtype>h2 {
+	display: inline-block;
+	font-size: 100%;
+	margin: 0;
+	font-weight: 100;
+}
+*/
+
+article.playing-card>section>hr.or {
+	border-width: 0.5pt;
+	border-color: DarkSlateGray;
+	width: 100%
+}
+
+article.playing-card>section>section.stat-with-value {
+	display: flex;
+	flex-direction: row;
+	height: 60pt;
+	line-height: 60pt;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+article.playing-card>section>section.stat-with-value>label {
+	display: inline-block;
+	flex-grow: 1;
+}
+
+article.playing-card>section>section.stat-with-value>value {
+	display: inline-block;
+	flex-grow: 0;
+	font-weight: bold;
+}
+
+article.playing-card>section p {
+	margin: 0.5em 0;
+}
+
+article.playing-card>section p.flavour {
+	font-style: italic;
+}
+
+article.playing-card>section>section.stat-with-value>value>small:before {
+	content: ' [';
+}
+
+article.playing-card>section>section.stat-with-value>value>small:after {
+	content: ']';
+}
+
+blockquote:before {
+	content: '\201c';
+}
+
+blockquote:after {
+	content: '\201d';
+}

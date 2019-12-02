@@ -1,0 +1,344 @@
+<html>
+	<head>
+		<title>Card Folio</title>
+		<link rel="stylesheet" type="text/css" href="cards.css" />
+	</head>
+	<body>
+		<article class="playing-card">
+			<header data-type="class"><h1>Fighter<h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Core</h2></figcaption>
+			<section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="class"><h1>Cleric<h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Core</h2></figcaption>
+			<section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="class"><h1>Wizard<h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Core</h2></figcaption>
+			<section>
+				<h2 class="type"></h2>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="action"><h1>Basic Attack</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Standard</h2></figcaption>
+			<section>
+				<p>On your turn, you may make a single melee attack.</p>
+				<section class="stat-with-value">
+					<label>To-hit</label><value>+1</value>
+				</section>
+				<!-- <hr class="or" /> -->
+				<section class="stat-with-value">
+					<label>Damage</label><value>1d3<small>NL</small></value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="defence"><h1>Shield, Heavy Wooden</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Shield</h2></figcaption>
+			<section>
+				<p>While this card is in play, gain a <strong>+1</strong> bonus to <abbr title="Armour Class">AC</abbr></p>
+				<section class="stat-with-value">
+					<label>AC</label><value>+1</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="defence"><h1>Chain Shirt</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Armour</h2></figcaption>
+			<section>
+				<section class="stat-with-value">
+					<label>AC</label><value>+4</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="weapon"><h1>Shield Bash</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Melee</h2></figcaption>
+			<section>
+				<p>Attach this card to an in-play <strong>Defence</strong> card with subtype: <strong>Shield</strong>. Once this card is in play, gain the following action:</p>
+			</section>
+			<header data-type="action"><h1>Shield Bash</h1></header>
+			<figcaption><h2 class="type">Standard</h2></figcaption>
+			<section>
+				<section class="stat-with-value">
+					<label>To-hit</label><value>+0</value>
+				</section>
+				<section class="stat-with-value">
+					<label>Damage</label><value>1d4<small>B</small></value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="action"><h1>Sunder</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Standard</h2></figcaption>
+			<section>
+				<p>Any time you are able to make a <strong>Basic Attack</strong>, you may instead attempt to break an enemy's weapon, armour, or any item otherwise equipped or held.</p>
+				<section class="stat-with-value">
+					<label>CMB</label><value>+1</value>
+				</section>
+				<section class="stat-with-value">
+					<label>CMD</label><value>11</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="action"><h1>Attack of Opportunity</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Immediate</h2></figcaption>
+			<section>
+				<p>When this card is in play, if an enemy passes through a square you threaten, you may make one <strong>Basic Attack</strong> against them. If you do, return this card to your hand. Any in-play weapons or alternate <strong>Basic Attack</strong> actions may be used as normal.</p>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="action"><h1>Full Attack</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Full Round</h2></figcaption>
+			<section>
+				<p>You may make two <strong>Basic Attack</strong>s. Any in-play weapons or alternate <strong>Basic Attack</strong> actions may be used as normal. The attacks use the following base attack bonuses. Any weapon bonuses apply on top.</p>
+				<section class="stat-with-value">
+					<label>To-hit</label><value>+2/+0</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="action"><h1>Disarm</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Standard</h2></figcaption>
+			<section>
+				<p>Any time you are able to make a <strong>Basic Attack</strong>, you may instead attempt to knock an enemy's weapon, armour, or any item otherwise equipped or held, out of their possession.</p>
+				<section class="stat-with-value">
+					<label>CMB</label><value>+1</value>
+				</section>
+				<section class="stat-with-value">
+					<label>CMD</label><value>11</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="action"><h1>Power Attack</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Immediate</h2></figcaption>
+			<section>
+				<p>Before you make a <strong>Basic Attack</strong>, you may choose to activate this ability. In doing so, you will take a <strong>-1</strong> penalty to hit in order to apply a </strong>+2</strong> bonus to damage.</p>
+				<section class="stat-with-value">
+					<label>To-hit</label><value>-1</value>
+				</section>
+				<section class="stat-with-value">
+					<label>Damage</label><value>+2</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="action"><h1>Combat Expertise</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Immediate</h2></figcaption>
+			<section>
+				<p>Before you make a <strong>Basic Attack</strong>, you may choose to activate this ability. In doing so, you will take a <strong>-1</strong> penalty to hit in order to apply a <strong>+1</strong> bonus to <abbr title="Armour Class">AC</abbr>.</p>
+				<section class="stat-with-value">
+					<label>To-hit</label><value>-1</value>
+				</section>
+				<section class="stat-with-value">
+					<label>AC</label><value>+1</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="ability"><h1>Cast Prepared Spell</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Spellcast</h2></figcaption>
+			<section>
+				<p>You may attempt to cast any Spell attached to this card. Discard the card, even if the spell is not successful.</p>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="action"><h1>Prepare Spell</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Out of Combat</h2></figcaption>
+			<section>
+				<p>You may attach a number of <strong>Cantrip</strong>s and <strong>Spell</strong>s to any in-play ability of Type: Spellcast.</p>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="ability"><h1>Cast Spontaneous Spell</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Spellcast</h2></figcaption>
+			<section>
+				<p>You may attempt to cast any Spell attached to this card. Return the card to your hand and add one counter to this card, even if the spell is not successful.</p>
+				<section class="stat-with-value">
+					<label>Uses</label><value>&square; &square; &square; &square; &square; &square;</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="cantrip"><h1>Acid Splash</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Conjuration</h2></figcaption>
+			<section>
+				<p class="flavour">You hurl a few flecks of acid at an enemy.</p>
+				<p>As a <strong>Basic Attack</strong>, make a Ranged Touch attack against a single enemy.</p>
+				<section class="stat-with-value">
+					<label>To-hit</label><value>+0</value>
+				</section>
+				<section class="stat-with-value">
+					<label>Damage</label><value>1d3<small>Acid</small></value>
+				</section>
+				<section class="stat-with-value">
+					<label>Range</label><value>25ft</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="action"><h1>Bonus Arcane Power</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Immediate</h2></figcaption>
+			<section>
+				<p>If this card has no Spell cards attached to it, when casting a Prepared Spell of type Evocation, instead of discarding the Spell, attach it to this card.</p>
+				<p>Once this card has a Spell card attached, gain the following ability:</p>
+			</section>
+			<header data-type="ability"><h1>Arcane Specialism: Evocation</h1></header>
+			<figcaption><h2 class="type">Spellcast</h2></figcaption>
+			<section>
+				<p>Cast a Prepared Spell attached to this card. When you discard the Spell, also discard this card.</p>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="ability"><h1>Bonded Object</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Spellcast</h2></figcaption>
+			<section>
+				<p>You may select any Spell in play or in your hand. Cast that Spell without discarding it. Then, discard this card.</p>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="spell"><h1>Shield</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Abjuration</h2></figcaption>
+			<section>
+				<p class="flavour">You summon a shimmering disc of force between you and your enemies.</p>
+				<p>Gain a <strong>+4</strong> bonus to your <abbr title="Armour Class">AC</abbr>. Any Magic Missile of which you are the target automatically misses.</p>
+				<section class="stat-with-value">
+					<label>AC</label><value>+4</value>
+				</section>
+				<section class="stat-with-value">
+					<label>Duration</label><value>10 rounds</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="defence"><h1>Defensive Training</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Racial</h2></figcaption>
+			<section>
+				<blockquote>They may be big, but they're slower and <em>much</em> stupider than you</blockquote>
+				<p class="flavour">Raised amongst the Gnomes, you have had many intensive lessons on how to avoid trouble from the bigger races.</p>
+				<p>Gain a <strong>+4</strong> to your <abbr title="Armour Class">AC</abbr> against attacks from a creature of the Giant type.</p>
+				<section class="stat-with-value">
+					<label>AC</label><value>+4</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="ability"><h1>Cast Prepared Cantrip</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Spellcast</h2></figcaption>
+			<section>
+				<p>You may attempt to cast any Cantrip attached to this card.</p>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="ability"><h1>Cast Prepared Orison</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Spellcast</h2></figcaption>
+			<section>
+				<p>You may attempt to cast any Orison attached to this card.</p>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="ability"><h1>Force Missile</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Spell-like</h2></figcaption>
+			<section>
+				<p>You unleash a homing force missile on a single target. This attack never misses. Force Missile acts as a Magic Missile for the purposes of determining other interactions.</p>
+				<section class="stat-with-value">
+					<label>To-hit</label><value>--</value>
+				</section>
+				<section class="stat-with-value">
+					<label>Damage</label><value>1d4+1<small>Force</small></value>
+				</section>
+				<section class="stat-with-value">
+					<label>Uses</label><value>&square; &square; &square; &square; &square; &square; &square; &square;</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="cantrip"><h1>Flare</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Evocation</h2></figcaption>
+			<section>
+				<p>You cause a burst of light to appear in front of a single creature. If that creature is sighted, it gains the <i>dazzled</i> condition.</p>
+				<section class="stat-with-value">
+					<label>Range</label><value>25ft</value>
+				</section>
+				<section class="stat-with-value">
+					<label>Save</label><value>DC11<small>Fort</small></value>
+				</section>
+				<section class="stat-with-value">
+					<label>Duration</label><value>10 rounds</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="cantrip"><h1>Mage Hand</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Transmutation</h2></figcaption>
+			<section>
+				<p>Point your finger at a distant object and move it at will. You may propel it 15ft in any direction per round.</p>
+				<section class="stat-with-value">
+					<label>Range</label><value>25ft</value>
+				</section>
+				<section class="stat-with-value">
+					<label>Duration</label><value>Concentration</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+	</body>
+</html>
