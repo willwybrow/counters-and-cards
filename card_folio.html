@@ -30,9 +30,12 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="action"><h1>Basic Attack</h1></header>
+			<header data-type="action">
+				<h1>Basic Attack</h1>
+				<aside>Standard</aside>
+			</header>
 			<figure></figure>
-			<figcaption><h2 class="type">Standard</h2></figcaption>
+			<figcaption><h2 class="type">Melee</h2></figcaption>
 			<section>
 				<p>On your turn, you may make a single melee attack.</p>
 				<section class="stat-with-value">
@@ -69,14 +72,17 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="weapon"><h1>Shield Bash</h1></header>
+			<header data-type="weapon"><h1>Bashing Shield</h1></header>
 			<figure></figure>
 			<figcaption><h2 class="type">Melee</h2></figcaption>
 			<section>
 				<p>Attach this card to an in-play <strong>Defence</strong> card with the <strong>Shield</strong> type. Once this card is in play, gain the following action:</p>
 			</section>
-			<header data-type="action"><h1>Shield Bash</h1></header>
-			<figcaption><h2 class="type">Standard</h2></figcaption>
+			<header data-type="action">
+				<h1>Shield Bash</h1>
+				<aside>Standard</aside>
+			</header>
+			<figcaption><h2 class="type">Melee</h2></figcaption>
 			<section>
 				<section class="stat-with-value">
 					<label>To-hit</label><value>+0</value>
@@ -88,11 +94,14 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="action"><h1>Sunder</h1></header>
+			<header data-type="action">
+				<h1>Sunder</h1>
+				<aside>Standard</aside>
+			</header>
 			<figure></figure>
-			<figcaption><h2 class="type">Standard</h2></figcaption>
+			<figcaption><h2 class="type">Combat Manoeuvre</h2></figcaption>
 			<section>
-				<p>Any time you are able to make a <strong>Basic Attack</strong>, you may instead attempt to break an enemy's weapon, armour, or any item otherwise equipped or held.</p>
+				<p>You attempt to render an enemy's Weapon or Defence less effective. Make a Combat Manoeuvre check against an enemy. If successful, select one in-play Defence or Weapon card belonging to them and place a Disabled marker on it.</p>
 				<section class="stat-with-value">
 					<label>CMB</label><value>+1</value>
 				</section>
@@ -103,20 +112,30 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="action"><h1>Attack of Opportunity</h1></header>
+			<header data-type="ability">
+				<h1>Opportune Combatant</h1>
+			</header>
 			<figure></figure>
-			<figcaption><h2 class="type">Immediate</h2></figcaption>
+			<figcaption><h2 class="type">Feat</h2></figcaption>
 			<section>
-				<p>When this card is in play, if an enemy passes through a square you threaten, you may make one <strong>Basic Attack</strong> against them. If you do, return this card to your hand. Any in-play weapons or alternate <strong>Basic Attack</strong> actions may be used as normal.</p>
+				<p>If an enemy passes through a square you threaten, you may select one of your Attack cards in-play that grants a Standard Action and take that action as an Immediate action against the threatened enemy.</p>
 			</section>
+			<header data-type="action">
+				<h1>Attack of Opportunity</h1>
+				<aside>Immediate</aside>
+			</header>
+			<figcaption><h2 class="type">Melee</h2></figcaption>
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="action"><h1>Full Attack</h1></header>
+			<header data-type="action">
+				<h1>Double Swing</h1>
+				<aside>Full-round</aside>
+			</header>
 			<figure></figure>
-			<figcaption><h2 class="type">Full Round</h2></figcaption>
+			<figcaption><h2 class="type">Melee</h2></figcaption>
 			<section>
-				<p>You may make two <strong>Basic Attack</strong>s. Any in-play weapons or alternate <strong>Basic Attack</strong> actions may be used as normal. The attacks use the following base attack bonuses. Any weapon bonuses apply on top.</p>
+				<p>You may take two Standard Actions provided by any in-play Attack cards. The attacks use the following base attack bonuses in place of the bonus stated on the card. Any bonuses from other Ability or Weapon cards apply on top.</p>
 				<section class="stat-with-value">
 					<label>To-hit</label><value>+2/+0</value>
 				</section>
@@ -124,11 +143,14 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="action"><h1>Disarm</h1></header>
+			<header data-type="action">
+				<h1>Disarm</h1>
+				<aside>Standard</aside>
+			</header>
 			<figure></figure>
-			<figcaption><h2 class="type">Standard</h2></figcaption>
+			<figcaption><h2 class="type">Combat Manoeuvre</h2></figcaption>
 			<section>
-				<p>Any time you are able to make a <strong>Basic Attack</strong>, you may instead attempt to knock an enemy's weapon, armour, or any item otherwise equipped or held, out of their possession.</p>
+				<p>You attempt to knock an enemy's equpped Weapon out of their possession. If successful, return the Weapon card to the player's hand.</p>
 				<section class="stat-with-value">
 					<label>CMB</label><value>+1</value>
 				</section>
@@ -139,11 +161,11 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="action"><h1>Power Attack</h1></header>
+			<header data-type="ability"><h1>Power Attack</h1></header>
 			<figure></figure>
-			<figcaption><h2 class="type">Immediate</h2></figcaption>
+			<figcaption><h2 class="type">Feat</h2></figcaption>
 			<section>
-				<p>Before you make a <strong>Basic Attack</strong>, you may choose to activate this ability. In doing so, you will take a <strong>-1</strong> penalty to hit in order to apply a </strong>+2</strong> bonus to damage.</p>
+				<p>Return an in-play Defence card to your hand. If you have no Defence cards in play, you cannot use this Ability. When you take your action, any Attack you make is subject to the following adjustments:</p>
 				<section class="stat-with-value">
 					<label>To-hit</label><value>-1</value>
 				</section>
@@ -154,57 +176,27 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="action"><h1>Combat Expertise</h1></header>
+			<header data-type="ability"><h1>Combat Expertise</h1></header>
 			<figure></figure>
-			<figcaption><h2 class="type">Immediate</h2></figcaption>
+			<figcaption><h2 class="type">Feat</h2></figcaption>
 			<section>
-				<p>Before you make a <strong>Basic Attack</strong>, you may choose to activate this ability. In doing so, you will take a <strong>-1</strong> penalty to hit in order to apply a <strong>+1</strong> bonus to <abbr title="Armour Class">AC</abbr>.</p>
+				<p>You may attach a Defence card from your hand to this card. On each turn, before you take an Action, you may choose to apply the effects of the attached Defence card until the beginning of your next turn. In doing so, you will take a <strong>-1</strong> penalty to hit on all Attack actions you take this turn.</p>
 				<section class="stat-with-value">
 					<label>To-hit</label><value>-1</value>
 				</section>
-				<section class="stat-with-value">
-					<label>AC</label><value>+1</value>
-				</section>
 			</section>
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="ability"><h1>Cast Prepared Spell</h1></header>
-			<figure></figure>
-			<figcaption><h2 class="type">Spellcast</h2></figcaption>
-			<section>
-				<p>You may attempt to cast any Spell attached to this card. Discard the card, even if the spell is not successful.</p>
-			</section>
-			<footer></footer>
-		</article>
-		<article class="playing-card">
-			<header data-type="action"><h1>Prepare Spell</h1></header>
-			<figure></figure>
-			<figcaption><h2 class="type">Out of Combat</h2></figcaption>
-			<section>
-				<p>You may attach a number of <strong>Cantrip</strong>s and <strong>Spell</strong>s to any in-play ability of Type: Spellcast.</p>
-			</section>
-			<footer></footer>
-		</article>
-		<article class="playing-card">
-			<header data-type="ability"><h1>Cast Spontaneous Spell</h1></header>
-			<figure></figure>
-			<figcaption><h2 class="type">Spellcast</h2></figcaption>
-			<section>
-				<p>You may attempt to cast any Spell attached to this card. Return the card to your hand and add one counter to this card, even if the spell is not successful.</p>
-				<section class="stat-with-value">
-					<label>Uses</label><value>&square; &square; &square; &square; &square; &square;</value>
-				</section>
-			</section>
-			<footer></footer>
-		</article>
-		<article class="playing-card">
-			<header data-type="cantrip"><h1>Acid Splash</h1></header>
+			<header data-type="cantrip">
+				<h1>Acid Splash</h1>
+				<aside>Standard</aside>
+			</header>
 			<figure></figure>
 			<figcaption><h2 class="type">Conjuration</h2></figcaption>
 			<section>
 				<p class="flavour">You hurl a few flecks of acid at an enemy.</p>
-				<p>As a <strong>Basic Attack</strong>, make a Ranged Touch attack against a single enemy.</p>
+				<p>Make a Ranged Touch attack with the following properties:</p>
 				<section class="stat-with-value">
 					<label>To-hit</label><value>+0</value>
 				</section>
@@ -222,27 +214,33 @@
 			<figure></figure>
 			<figcaption><h2 class="type">Immediate</h2></figcaption>
 			<section>
-				<p>If this card has no Spell cards attached to it, when casting a Prepared Spell of type Evocation, instead of discarding the Spell, attach it to this card.</p>
+				<p>If this card has no Spell cards attached to it, when casting a Spell of type Evocation, instead of discarding the Spell, attach it to this card.</p>
 				<p>Once this card has a Spell card attached, gain the following ability:</p>
 			</section>
-			<header data-type="ability"><h1>Arcane Specialism: Evocation</h1></header>
-			<figcaption><h2 class="type">Spellcast</h2></figcaption>
+			<header data-type="spell"><h1>Arcane Specialism: Evocation</h1></header>
+			<figcaption><h2 class="type">Evocation</h2></figcaption>
 			<section>
-				<p>Cast a Prepared Spell attached to this card. When you discard the Spell, also discard this card.</p>
+				<p>Cast the spell attached to this card. When you discard the Spell, also discard this card.</p>
 			</section>
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="ability"><h1>Bonded Object</h1></header>
+			<header data-type="action">
+				<h1>Bonded Object</h1>
+				<aside>Standard</aside>
+			</header>
 			<figure></figure>
 			<figcaption><h2 class="type">Spellcast</h2></figcaption>
 			<section>
-				<p>You may select any Spell in play or in your hand. Cast that Spell without discarding it. Then, discard this card.</p>
+				<p>You may select any Spell in play or in your hand with a cast time of Standard Action. Cast that Spell without discarding it. Then, discard this card.</p>
 			</section>
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="spell"><h1>Shield</h1></header>
+			<header data-type="spell">
+				<h1>Shield</h1>
+				<aside>Standard</aside>
+			</header>
 			<figure></figure>
 			<figcaption><h2 class="type">Abjuration</h2></figcaption>
 			<section>
@@ -272,20 +270,35 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="ability"><h1>Cast Prepared Cantrip</h1></header>
+			<header data-type="class">
+				<h1>Reckless Warrior</h1>
+			</header>
 			<figure></figure>
-			<figcaption><h2 class="type">Spellcast</h2></figcaption>
+			<figcaption><h2 class="type">Class</h2></figcaption>
 			<section>
-				<p>You may attempt to cast any Cantrip attached to this card.</p>
+				<p>Search your deck for one Defence card and one Weapon card. Discard the Defence and attach the Weapon to an appropriate in-play Attack.</p>
 			</section>
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="ability"><h1>Cast Prepared Orison</h1></header>
+			<header data-type="class">
+				<h1>Prepared Spellcaster</h1>
+			</header>
 			<figure></figure>
-			<figcaption><h2 class="type">Spellcast</h2></figcaption>
+			<figcaption><h2 class="type">Class</h2></figcaption>
 			<section>
-				<p>You may attempt to cast any Orison attached to this card.</p>
+				<p>Search your deck for two spells. Discard one and place the other into your hand.</p>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="class">
+				<h1>Spontaneous Spellcaster</h1>
+			</header>
+			<figure></figure>
+			<figcaption><h2 class="type">Class</h2></figcaption>
+			<section>
+				<p>Search your discard pile for one Spell and place it into your hand.</p>
 			</section>
 			<footer></footer>
 		</article>
@@ -294,13 +307,7 @@
 			<figure></figure>
 			<figcaption><h2 class="type">Spell-like</h2></figcaption>
 			<section>
-				<p>You unleash a homing force missile on a single target. This attack never misses. Force Missile acts as a Magic Missile for the purposes of determining other interactions.</p>
-				<section class="stat-with-value">
-					<label>To-hit</label><value>--</value>
-				</section>
-				<section class="stat-with-value">
-					<label>Damage</label><value>1d4+1<small>Force</small></value>
-				</section>
+				<p>Once when you play this card, you may search your deck for a Spell with the name Magic Missile and attach it to this card. On your turn, as a Standard Action, you may cast the attached spell. Doing so consumes one use of this Ability. When you discard this card, also discard any attached Spell.</p>
 				<section class="stat-with-value">
 					<label>Uses</label><value>&square; &square; &square; &square; &square; &square; &square; &square;</value>
 				</section>
@@ -308,7 +315,31 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="cantrip"><h1>Flare</h1></header>
+			<header data-type="spell">
+				<h1>Magic Missile</h1>
+				<aside>Standard</aside>
+			</header>
+			<figure></figure>
+			<figcaption><h2 class="type">Evocation</h2></figcaption>
+			<section>
+				<p>A missile of magical energy emerges from your fingertips and strikes its target unerringly</p>
+				<section class="stat-with-value">
+					<label>Target</label><value>2 creatures</value>
+				</section>
+				<section class="stat-with-value">
+					<label>Range</label><value>100ft</value>
+				</section>
+				<section class="stat-with-value">
+					<label>Damage</label><value>1d4+1<small>Force</small></value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="cantrip">
+				<h1>Flare</h1>
+				<aside>Standard</aside>
+			</header>
 			<figure></figure>
 			<figcaption><h2 class="type">Evocation</h2></figcaption>
 			<section>
@@ -326,7 +357,10 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="cantrip"><h1>Mage Hand</h1></header>
+			<header data-type="cantrip">
+				<h1>Mage Hand</h1>
+				<aside>Standard</aside>
+			</header>
 			<figure></figure>
 			<figcaption><h2 class="type">Transmutation</h2></figcaption>
 			<section>
@@ -349,6 +383,15 @@
 				<section class="stat-with-value">
 					<label>Draw</label><value>+1</value>
 				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="class"><h1>Improved Initiative</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Class</h2></figcaption>
+			<section>
+				<p>Your reactions are quicker than most. Draw 2 cards.</p>
 			</section>
 			<footer></footer>
 		</article>

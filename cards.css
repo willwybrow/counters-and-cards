@@ -5,6 +5,7 @@ body {
 }
 
 article.playing-card {
+	position: relative;
 	flex-shrink: 0;
     flex-grow: 0;
 	display: flex;
@@ -20,6 +21,10 @@ article.playing-card {
 
 article.playing-card * {
 	flex-grow: 0;
+}
+
+article.playing-card header {
+	position: relative;
 }
 
 article.playing-card header[data-type]>h1 {
@@ -73,11 +78,13 @@ article.playing-card>header[data-type=ability] {
 }
 
 article.playing-card>header[data-type=orison] {
-	background-color: MediumTurquoise;
+	/* background-color: MediumTurquoise; */
+	background: linear-gradient(90deg,MediumTurquoise,MediumTurquoise,Silver);
 }
 
 article.playing-card>header[data-type=cantrip] {
-	background-color: CornflowerBlue;
+	/* background-color: CornflowerBlue; */
+	background: linear-gradient(90deg,CornflowerBlue,CornflowerBlue,Silver);
 }
 
 article.playing-card>header[data-type=spell] {
@@ -102,7 +109,7 @@ article.playing-card>header[data-type=item] {
 }
 
 article.playing-card>header[data-type=action]:after {
-	content: 'Action';
+	content: 'Melee';
 }
 
 article.playing-card>header[data-type=ability]:after {
@@ -135,6 +142,22 @@ article.playing-card>header[data-type=weapon]:after {
 
 article.playing-card>header[data-type=item]:after {
 	content: 'Item';
+}
+
+article.playing-card>header>aside {
+	position: absolute;
+	left: 0;
+	display: block;
+	height: 16pt;
+	font-variant: small-caps;
+	font-size: 50%;
+	bottom: -8pt;
+	background: linear-gradient(0deg,Goldenrod,Gold,PaleGoldenrod,Goldenrod);
+	width: 15%;
+	text-align: right;
+	font-weight: bold;
+	line-height: 16pt;
+	padding: 0 0.25em;
 }
 
 article.playing-card>figure {
