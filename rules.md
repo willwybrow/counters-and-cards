@@ -6,9 +6,13 @@
 
 Each player has a conceptual play space directly in front of them which we will call the *table*.
 
+Each player has a *hand* of cards that they literally hold.
+
 Cards placed face-up on the table are considered to be *in-play*. A player may have a maximum of 7 cards in-play.
 
-Some cards may or must be attached to other cards. These cards are also considered to be in-play, but do not count towards the limit of in-play cards.
+A card may be *played*, meaning to place it from a player's hand into one of the player's 7 slots on the table.
+
+Some cards may or must be *equipped* or *attached* to other cards. These cards are also considered to be in-play, but do not count towards the limit of in-play cards.
 
 Cards that have been expended, either because they are Class or Spell cards that are used once, or because they have a finite number of uses per day, should be placed face-down into a single *discard pile*.
 
@@ -60,7 +64,7 @@ A spell may also have a special Duration of Concentration. Once cast, turn the c
 **Ability** cards represent some supernatural power or combat feat known by your character. Once in-play, Ability cards may modify or grant some additional Actions your character can take. Ability cards may have finite permitted uses and, once expended, must be discarded.
 
 #### Class Cards (Red)
-**Class** cards are cards that are played straight from your hand. They are only in-play for as long as their effects are active. Once played, these cards are discarded.
+**Class** cards represent your character's unique class or racial meta-abilities. These cards are played straight from your hand and usually modify the state of the table rather than have direct effects on the in-game situation. Their stated effects happen immediately, and do not enter an in-play state. Once played, these cards are discarded.
 
 ### Card States
 A card is considered *active* if it is both in-play and not otherwise disabled. 
@@ -73,17 +77,28 @@ A card can have a special disabled marker placed on it. This could indicate any 
 
 ## Playing
 
-At the start of any combat or social encounter, all participants draw an additional card from their decks. If any participant is caught by surprise at the beginning of the encounter, they do not draw a card.
+At the start of any encounter, all participants draw an additional card from their decks. If any participant is caught by surprise at the beginning of the encounter, they do not draw a card.
 
 Each participant may then roll 1d20 initiative to determine the order in which play will proceed. The character with the highest roll (plus any relevant modifier from in-play cards) will go first. Ties may be broken by additional rolls.
 
 On each participant's turn, they may draw a single card from their deck.
 
 A player may, before taking an action: 
-- play a card from their hand
+- use a single-use card from their hand (e.g. Class cards)
+- put a card in-play from their hand (e.g. Attack cards, Spell cards, Ability cards)
 - declare a single use of an in-play Ability
 - discard an in-play card
 
-Finally, a player can take an action. Generally they may make a standard action and a move action in any order, two move actions, or make a full-round action. A player may also make a single swift action, and unlimited free actions.
+Finally, a player can take an action. Generally they may make a standard action and a move action in any order, two move actions, or make a full-round action. 
+
+A player may also make a single swift action, and unlimited free actions.
 
 Immediate actions, if a player has any in-play, may be taken at any time, even when it is another player's turn.
+
+Some possible move actions a player may take:
+- attaching or equipping a Weapon or Defence card from their hand to an approptiate in-play card
+- moving their character up to their full movement speed
+
+Some standard actions a player may take:
+- cast a Spell with a cast time of Standard
+- make an Attack with an action type of Standard
