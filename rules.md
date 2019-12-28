@@ -60,6 +60,9 @@ A spell may also have a special Duration of Concentration. Once cast, turn the c
 #### Weapon Cards (Purple)
 **Weapon** cards represent an item in your character's possession that enhances one of their actions. Weapon cards are generally played attached to Attack or Spell cards, modifying the card's properties. If the card to which a Weapon card is attached is discarded, return the Weapon to your hand unless otherwise specified.
 
+#### Consumable Cards (Orange)
+**Consumable** cards represent a one or more consumables in your character's possession that may be used as thrown weapons or ammunition for an appropriate weapon. Consumable cards may be played attached to Weapon cards that specify an ammunition type, thereby enabling the weapon's attack. If the card to which a Consumable card is attached is discarded, also discard the Consumable.
+
 #### Ability Cards (Peach)
 **Ability** cards represent some supernatural power or combat feat known by your character. Once in-play, Ability cards may modify or grant some additional Actions your character can take. Ability cards may have finite permitted uses and, once expended, must be discarded.
 
@@ -96,7 +99,7 @@ A player may also make a single swift action, and unlimited free actions.
 Immediate actions, if a player has any in-play, may be taken at any time, even when it is another player's turn.
 
 Some possible move actions a player may take:
-- attaching or equipping a Weapon or Defence card from their hand to an approptiate in-play card
+- attaching or equipping a Weapon or Defence card from their hand to an appropriate in-play card
 - moving their character up to their full movement speed
 
 Some standard actions a player may take:

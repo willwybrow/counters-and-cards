@@ -5,18 +5,26 @@
 	</head>
 	<body>
 		<article class="playing-card">
-			<header data-type="class"><h1>Fighter<h1></header>
+			<header data-type="class">
+				<h1>Martial Prowess<h1>
+			</header>
 			<figure></figure>
-			<figcaption><h2 class="type">Core</h2></figcaption>
+			<figcaption>
+				<h2 class="type">Class</h2>
+			</figcaption>
 			<section>
+				<p class="flavour">Your skill in combat is unparalleled amongst your peers.</p>
+				<p>Search your deck for 2 Ability cards of type Feat and add them to your hand.</p>
 			</section>
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="class"><h1>Cleric<h1></header>
+			<header data-type="class"><h1>Spontaneous Healing<h1></header>
 			<figure></figure>
-			<figcaption><h2 class="type">Core</h2></figcaption>
+			<figcaption><h2 class="type">Class</h2></figcaption>
 			<section>
+				<p class="flavour">Your proclivity for healing others manifests in your spellcasting.</p>
+				<p>Discard an in-play Spell card. If you do not have any in-play Spell cards, you cannot play this card. Search your deck for any Spell card with "Cure" in its name and play it.</p>
 			</section>
 			<footer></footer>
 		</article>
@@ -72,9 +80,9 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="weapon"><h1>Bashing Shield</h1></header>
+			<header data-type="weapon"><h1>Sturdy Shield</h1></header>
 			<figure></figure>
-			<figcaption><h2 class="type">Melee</h2></figcaption>
+			<figcaption><h2 class="type">Buckler</h2></figcaption>
 			<section>
 				<p>Attach this card to an in-play <strong>Defence</strong> card with the <strong>Shield</strong> type. Once this card is in play, gain the following action:</p>
 			</section>
@@ -94,6 +102,55 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
+			<header data-type="weapon"><h1>Greataxe</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Two-Handed</h2></figcaption>
+			<section>
+				<p class="flavour">This enormous, double-headed axe looks like it takes substantial strength to even lift.</p>
+				<section class="stat-with-value">
+					<label>To-hit</label><value>+1</value>
+				</section>
+				<section class="stat-with-value">
+					<label>Damage</label><value>1d12+1<small>S</small></value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="weapon"><h1>Blowgun</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Two-Handed</h2></figcaption>
+			<section>
+				<section class="stat-with-value">
+					<label>Range</label><value>40ft/60ft/80ft/90ft</value>
+				</section>
+				<section class="stat-with-value">
+					<label>To-hit</label><value>0/-1/-2/-3</value>
+				</section>
+				<section class="stat-with-value">
+					<label>Damage</label><value>1d2<small>P</small></value>
+				</section>
+			</section>
+			<footer>
+				<aside class="ammunition">Dart</aside>
+			</footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="ammunition"><h1>Feathered Dart</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Dart</h2></figcaption>
+			<section>
+				<section class="stat-with-value">
+					<label>Damage</label><value>+2<small>P</small></value>
+				</section>
+				<section class="stat-with-value">
+					<label>Uses</label><value>&square; &square; &square; &square; &square; &square; &square; &square; &square; &square;</value>
+				</section>
+			</section>
+			<footer>
+			</footer>
+		</article>
+		<article class="playing-card">
 			<header data-type="action">
 				<h1>Sunder</h1>
 				<aside>Standard</aside>
@@ -101,7 +158,7 @@
 			<figure></figure>
 			<figcaption><h2 class="type">Combat Manoeuvre</h2></figcaption>
 			<section>
-				<p>You attempt to render an enemy's Weapon or Defence less effective. Make a Combat Manoeuvre check against an enemy. If successful, select one in-play Defence or Weapon card belonging to them and place a Disabled marker on it.</p>
+				<p>You attempt to render an enemy's Weapon or Armour less effective. Make a Combat Manoeuvre check against an enemy. If successful, select one in-play Weapon card or Defence card of type Armour or Shield belonging to them and place a Disabled marker on it.</p>
 				<section class="stat-with-value">
 					<label>CMB</label><value>+1</value>
 				</section>
@@ -125,6 +182,11 @@
 				<aside>Immediate</aside>
 			</header>
 			<figcaption><h2 class="type">Melee</h2></figcaption>
+			<section>
+				<section class="stat-with-value">
+					<label>Uses</label><value>&square; &square; &square; &square; &square; &square; &square; &square;</value>
+				</section>
+			</section>
 			<footer></footer>
 		</article>
 		<article class="playing-card">
@@ -136,6 +198,25 @@
 			<figcaption><h2 class="type">Melee</h2></figcaption>
 			<section>
 				<p>You may take two Standard Actions provided by any in-play Attack cards. The attacks use the following base attack bonuses in place of the bonus stated on the card. Any bonuses from other Ability or Weapon cards apply on top.</p>
+				<section class="stat-with-value">
+					<label>To-hit</label><value>+2/+0</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
+			<header data-type="action">
+				<h1>Two-weapon Fighting</h1>
+				<aside>Full-round</aside>
+			</header>
+			<figure></figure>
+			<figcaption><h2 class="type">Melee</h2></figcaption>
+			<section>
+				<p>You may attach up to two Weapon cards of type One-Handed to this card.</p>
+				<p>You make an attack using a weapon in either hand. Without weapons, the first and second attacks use the following base attack values. You may use any attached Weapon cards in either order.</p>
+				<section class="stat-with-value">
+					<label>Range</label><value>5ft</value>
+				</section>
 				<section class="stat-with-value">
 					<label>To-hit</label><value>+2/+0</value>
 				</section>
@@ -210,14 +291,17 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
-			<header data-type="action"><h1>Bonus Arcane Power</h1></header>
+			<header data-type="ability"><h1>Bonus Arcane Power</h1></header>
 			<figure></figure>
-			<figcaption><h2 class="type">Immediate</h2></figcaption>
+			<figcaption><h2 class="type">Class Feature</h2></figcaption>
 			<section>
-				<p>If this card has no Spell cards attached to it, when casting a Spell of type Evocation, instead of discarding the Spell, attach it to this card.</p>
-				<p>Once this card has a Spell card attached, gain the following ability:</p>
+				<p>If this card has no Spell cards attached to it, you may nominate an in-play Spell of type Evocation with a cast time of Standard or lower. When you cast it, instead of discarding the Spell, attach it to this card.</p>
+				<p>Once this card has a Spell card attached, gain the following action:</p>
 			</section>
-			<header data-type="spell"><h1>Arcane Specialism: Evocation</h1></header>
+			<header data-type="spell">
+				<h1>Arcane Specialism: Evocation</h1>
+				<aside>Standard</aside>
+			</header>
 			<figcaption><h2 class="type">Evocation</h2></figcaption>
 			<section>
 				<p>Cast the spell attached to this card. When you discard the Spell, also discard this card.</p>
@@ -315,6 +399,18 @@
 			<footer></footer>
 		</article>
 		<article class="playing-card">
+			<header data-type="ability"><h1>Channel Positive Energy</h1></header>
+			<figure></figure>
+			<figcaption><h2 class="type">Supernatural</h2></figcaption>
+			<section>
+				<p></p>
+				<section class="stat-with-value">
+					<label>Uses</label><value>&square; &square; &square; &square; &square; &square; &square; &square;</value>
+				</section>
+			</section>
+			<footer></footer>
+		</article>
+		<article class="playing-card">
 			<header data-type="spell">
 				<h1>Magic Missile</h1>
 				<aside>Standard</aside>
@@ -322,7 +418,7 @@
 			<figure></figure>
 			<figcaption><h2 class="type">Evocation</h2></figcaption>
 			<section>
-				<p>A missile of magical energy emerges from your fingertips and strikes its target unerringly</p>
+				<p class="flavour">A missile of magical energy emerges from your fingertips and strikes its target unerringly</p>
 				<section class="stat-with-value">
 					<label>Target</label><value>2 creatures</value>
 				</section>

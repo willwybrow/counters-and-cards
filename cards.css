@@ -15,7 +15,9 @@ article.playing-card {
 	font-size: 24pt;
 	border-radius: 36pt;
 	padding: 6pt;
-	background: linear-gradient(127deg,#fce3ec,#ffe8cc);
+	/* background: linear-gradient(127deg,#fce3ec,#ffe8cc); */
+	background-color: #FBABCE;
+	background-image: linear-gradient(62deg, #EBCBAE 0%, #E7DE88 100%);
 	flex-direction: column;
 }
 
@@ -46,7 +48,20 @@ article.playing-card header[data-type] {
 	font-size: 110%;
 }
 
+aside {
+	position: absolute;
+	display: block;
+	height: 16pt;
+	font-variant: small-caps;
+	font-size: 50%;
+	font-weight: bold;
+	line-height: 17pt;
+	padding: 0 0.25em;
+	width: 15%;
+}
+
 article.playing-card>footer {
+	position: relative;
 	border-bottom-left-radius: 30pt;
 	border-bottom-right-radius: 30pt;
 	padding-left: 30pt;
@@ -58,6 +73,13 @@ article.playing-card>footer {
 	flex-direction: row;
 }
 
+article.playing-card>footer>aside {
+	right: 0;
+	top: -8pt;
+	background: linear-gradient(0deg,MidnightBlue,Indigo,MidnightBlue);
+	text-align: left;
+}
+
 article.playing-card>header[data-type]:after {
 	font-variant: small-caps;
 	font-size: 75%;
@@ -67,49 +89,71 @@ article.playing-card>header[data-type]:after {
 
 article.playing-card>header[data-type=action] {
 	background-color: Silver;
+	background-image: linear-gradient(90deg,Silver,Silver,DarkGray);
+	color: Black;
 }
 
 article.playing-card>header[data-type~=action][data-type~=weapon] {
-	background: linear-gradient(90deg,Silver,Silver,Orchid,Orchid);
+	background-image: linear-gradient(90deg,Silver,Silver,Orchid,Orchid);
+	color: Black;
 }
 
 article.playing-card>header[data-type=ability] {
 	background-color: PeachPuff;
+	background-image: linear-gradient(90deg,PeachPuff,PeachPuff,Moccasin);
+	color: Black;
 }
 
 article.playing-card>header[data-type=orison] {
-	/* background-color: MediumTurquoise; */
-	background: linear-gradient(90deg,MediumTurquoise,MediumTurquoise,Silver);
+	background-color: MediumTurquoise;
+	background-image: linear-gradient(90deg,MediumTurquoise,MediumTurquoise,Silver);
+	color: Black;
 }
 
 article.playing-card>header[data-type=cantrip] {
-	/* background-color: CornflowerBlue; */
-	background: linear-gradient(90deg,CornflowerBlue,CornflowerBlue,Silver);
+	background-color: CornflowerBlue;
+	background-image: linear-gradient(90deg,CornflowerBlue,CornflowerBlue,Silver);
+	color: Black;
 }
 
 article.playing-card>header[data-type=spell] {
 	background-color: DodgerBlue;
+	background-image: linear-gradient(90deg,DodgerBlue,DodgerBlue,RoyalBlue);
+	color: Black;
 }
 
 article.playing-card>header[data-type=class] {
 	background-color: Crimson;
+	background-image: linear-gradient(90deg,Crimson,Crimson,Firebrick);
 	color: Snow;
 }
 
 article.playing-card>header[data-type=defence] {
 	background-color: MediumSpringGreen;
+	background-image: linear-gradient(90deg,MediumSpringGreen,MediumSpringGreen,SpringGreen);
+	color: Black;
 }
 
 article.playing-card>header[data-type=weapon] {
 	background-color: Orchid;
+	background-image: linear-gradient(90deg,Orchid,Orchid,MediumOrchid);
+	color: Black;
+}
+
+article.playing-card>header[data-type=ammunition] {
+	background-color: DarkOrange;
+	background-image: linear-gradient(90deg,DarkOrange,DarkOrange,Coral);
+	color: Black;
 }
 
 article.playing-card>header[data-type=item] {
 	background-color: Plum;
+	background-image: linear-gradient(Plum,Plum,Orchid);
+	color: Black;
 }
 
 article.playing-card>header[data-type=action]:after {
-	content: 'Melee';
+	content: 'Attack';
 }
 
 article.playing-card>header[data-type=ability]:after {
@@ -140,24 +184,19 @@ article.playing-card>header[data-type=weapon]:after {
 	content: 'Weapon';
 }
 
+article.playing-card>header[data-type=ammunition]:after {
+	content: 'Ammo';
+}
+
 article.playing-card>header[data-type=item]:after {
 	content: 'Item';
 }
 
 article.playing-card>header>aside {
-	position: absolute;
 	left: 0;
-	display: block;
-	height: 16pt;
-	font-variant: small-caps;
-	font-size: 50%;
 	bottom: -8pt;
 	background: linear-gradient(0deg,Goldenrod,Gold,PaleGoldenrod,Goldenrod);
-	width: 15%;
 	text-align: right;
-	font-weight: bold;
-	line-height: 16pt;
-	padding: 0 0.25em;
 }
 
 article.playing-card>figure {
@@ -187,11 +226,12 @@ article.playing-card figcaption>h2:before {
 
 article.playing-card>section {
 	background-color: transparent;
-	padding: 0 26pt 6pt;
+	/* padding: 0 26pt 6pt; */
 	display: flex;
 	flex-direction: column;
 	line-height: 40pt;
 	flex-grow: 1;
+	/* margin: 0 26pt 6pt; */
 }
 
 
@@ -215,12 +255,24 @@ article.playing-card>section>hr.or {
 	width: 100%
 }
 
+article.playing-card>section>section.stat-with-value:first-of-type {
+	border-top-left-radius: 36pt;
+	border-top-right-radius: 36pt;
+}
+
+article.playing-card>section>section.stat-with-value:last-of-type {
+	border-bottom-left-radius: 36pt;
+	border-bottom-right-radius: 36pt;
+}
+
 article.playing-card>section>section.stat-with-value {
 	display: flex;
 	flex-direction: row;
 	height: 60pt;
 	line-height: 60pt;
 	background: rgba(255, 255, 255, 0.1);
+	background-image: linear-gradient(270deg, rgba(255, 255, 255, 0.1), rgba(128, 128, 128, 0.1));
+	padding: 0 26pt;
 }
 
 article.playing-card>section>section.stat-with-value>label {
@@ -236,6 +288,7 @@ article.playing-card>section>section.stat-with-value>value {
 
 article.playing-card>section p {
 	margin: 0.5em 0;
+	padding: 0 26pt;
 }
 
 article.playing-card>section p.flavour {
