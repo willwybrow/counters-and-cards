@@ -14,7 +14,7 @@ A card may be *played*, meaning to place it from a player's hand into one of the
 
 Some cards may or must be *equipped* or *attached* to other cards. These cards are also considered to be in-play, but do not count towards the limit of in-play cards.
 
-Cards that have been expended, either because they are Class or Spell cards that are used once, or because they have a finite number of uses per day, should be placed face-down into a single *discard pile*.
+Cards that have been expended, either because they are Class or Spell cards that are used once, or because they have a finite number of uses per day, should be placed face-up into a single *discard pile*.
 
 ### Hand Setup
 
