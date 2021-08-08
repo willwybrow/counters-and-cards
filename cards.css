@@ -143,8 +143,12 @@ article.playing-card[data-ability-requirement]>header:first-child:before {
 article.playing-card>header[data-type]:after {
 	font-variant: small-caps;
 	font-size: 75%;
-	margin-right: 2em;
+	margin: 0;
+	padding-left: 24pt;
+	padding-right: 24pt;
 	flex-grow: 0;
+	border-top-right-radius: 30pt;
+	border-bottom-left-radius: 30pt;
 }
 
 article.playing-card>header[data-type=action] {
@@ -220,46 +224,57 @@ article.playing-card>header[data-type=item] {
 
 article.playing-card>header[data-type=action]:after {
 	content: 'Action';
+	background: Silver;
 }
 
 article.playing-card>header[data-type=attack]:after {
 	content: 'Attack';
+	background: Silver;
 }
 
 article.playing-card>header[data-type=ability]:after {
 	content: 'Ability';
+	background: PeachPuff;
 }
 
 article.playing-card>header[data-type=class]:after {
 	content: 'Class';
+	background: Crimson;
 }
 
 article.playing-card>header[data-type=defence]:after {
 	content: 'Defence';
+	background: MediumSpringGreen;
 }
 
 article.playing-card>header[data-type=orison]:after {
 	content: 'Orison';
+	background: DodgerBlue;
 }
 
 article.playing-card>header[data-type=cantrip]:after {
 	content: 'Cantrip';
+	background: DodgerBlue;
 }
 
 article.playing-card>header[data-type=spell]:after {
 	content: 'Spell';
+	background: DodgerBlue;
 }
 
 article.playing-card>header[data-type=weapon]:after {
 	content: 'Weapon';
+	background-color: Orchid;
 }
 
 article.playing-card>header[data-type=ammunition]:after {
 	content: 'Ammunition';
+	background-color: DarkOrange;
 }
 
 article.playing-card>header[data-type=item]:after {
 	content: 'Item';
+	background-color: Plum;
 }
 
 article.playing-card[data-ability-requirement^=str]>header:first-child:before {

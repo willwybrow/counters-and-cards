@@ -3,6 +3,8 @@ import re
 import cards
 from typing import List, Union
 
+from prettierfier import prettify_html
+
 from bs4 import Tag, BeautifulSoup, NavigableString
 
 modifier_re = re.compile(r'([+-]\d+)')
@@ -10,7 +12,7 @@ dice_re = re.compile(r'(\d+)d(\d+)([+-]\d+)')
 
 
 def generate():
-    soup = BeautifulSoup(features='html5lib')
+    soup = BeautifulSoup()
     html = Tag(name="html")
     soup.append(html)
     head = Tag(name="head")
@@ -65,7 +67,7 @@ def generate():
     print(soup.prettify())
 
     with codecs.open("card_folio.html", mode="w") as file:
-        file.write(str(soup))
+        file.write(prettify_html(soup.prettify()))
 
     print("Done")
 
