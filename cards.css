@@ -94,6 +94,12 @@ article.playing-card>header[data-type=action] {
 	color: Black;
 }
 
+article.playing-card>header[data-type=attack] {
+	background-color: Silver;
+	background-image: linear-gradient(90deg,Silver,Silver,DarkGray);
+	color: Black;
+}
+
 article.playing-card>header[data-type~=action][data-type~=weapon] {
 	background-image: linear-gradient(90deg,Silver,Silver,Orchid,Orchid);
 	color: Black;
@@ -154,6 +160,10 @@ article.playing-card>header[data-type=item] {
 }
 
 article.playing-card>header[data-type=action]:after {
+	content: 'Action';
+}
+
+article.playing-card>header[data-type=attack]:after {
 	content: 'Attack';
 }
 
@@ -193,22 +203,44 @@ article.playing-card>header[data-type=item]:after {
 	content: 'Item';
 }
 
-article.playing-card>header>aside {
+article.playing-card>header>aside.action-type {
 	left: 0;
 	bottom: -8pt;
 	background: linear-gradient(0deg,Goldenrod,Gold,PaleGoldenrod,Goldenrod);
 	text-align: right;
 }
 
+article.playing-card>header>aside.spell-duration {
+	right: 0;
+	bottom: -8pt;
+	background: linear-gradient(0deg,MidnightBlue,RoyalBlue,SlateBlue,DodgerBlue);
+	text-align: left;
+	color: white;
+}
+
 article.playing-card>figure {
 	display: block;
-	height: 360pt;
-	background-color: rgba(255, 255, 255, 0.5);
+	max-height: 360pt;
 	padding: 0;
 	margin: 0;
 }
 
-article.playing-card figcaption>h2 {
+article.playing-card>figure>img {
+	display: block;
+	height: 330pt;
+	padding: 0;
+	margin: 0;
+
+}
+
+article.playing-card>figure>figcaption {
+	display: block;
+	height: 30pt;
+	padding: 0;
+	margin: 0;
+}
+
+article.playing-card>figure>figcaption>h2 {
 	font-size: 70%;
 	line-height: 2;
 	padding: 0 26pt;
@@ -220,7 +252,7 @@ article.playing-card figcaption>h2 {
 	border-bottom-right-radius: 30pt;
 }
 
-article.playing-card figcaption>h2:before {
+article.playing-card>figure>figcaption>h2:before {
 	content: 'Type: ';
 	font-weight: bold;
 }

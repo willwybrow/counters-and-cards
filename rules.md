@@ -14,7 +14,7 @@ A card may be *played*, meaning to place it from a player's hand into one of the
 
 Some cards may or must be *equipped* or *attached* to other cards. These cards are also considered to be in-play, but do not count towards the limit of in-play cards.
 
-Cards that have been expended, either because they are Class or Spell cards that are used once, or because they have a finite number of uses per day, should be placed face-up into a single *discard pile*.
+Cards that have been expended, either because they are Class or Spell cards that are used once, or because they have a finite number of Uses per day, or because they've been discarded through some other effect, should be placed face-up into a single *discard pile*.
 
 ### Hand Setup
 
@@ -39,40 +39,49 @@ Cards that grant actions will have the action type in gold shown underneath the 
 
 Cards have a number of different types:
 
-#### Attack Cards (Silver)
+#### Action Cards (Silver)
 
 **Attack** cards represent a repeatable action that your character may do over and over again. Once in-play, Attack cards usually remain unless discarded by some other event. They frequently may be enhanced with **Weapon** cards.
 
-#### Spell Cards (Blue)
-**Spell** cards represent a single instance of a magical capability your character possesses. Spell cards must be in-play to be cast. Once a spell is cast, the spell card is discarded.
+**Action** cards represent actions that your character may take while in combat, but are not necessarily targeted attacks.
 
-**Orison** and **Cantrip** cards are variations of Spell cards that do not need to be discarded after casting.
+#### Spell Cards (Blue)
+**Spell** cards represent a single instance of a magical capability your character possesses. Play a card from your hand to cast that spell. Like Actions, each Spell has an Action Cost, and a Spell can only be played if the player has sufficient Actions to cast it. 
+
+**Orison** and **Cantrip** cards are variations of Spell cards that are returned to your hand after casting.
 
 A spell's cast time is its action type. Therefore a spell with a casting time of Full-round cannot be cast in the same turn as a Move action is taken.
 
-A spell may have a Duration. If it does, turn the spell card sideways to indicate it has been cast. If a spell's duration is a number of rounds, at the start of each subsequent turn, add a single counter to the spell card. When the number of counters equals or exceeds the duration in rounds, discard the spell card.
 
-A spell may also have a special Duration of Concentration. Once cast, turn the card sideways. On each subsequent turn, as a Standard Action, you may choose to continue to concentrate on a currently-active spell. This leaves the spell active. If another Action is taken, or if your character is unable to take an Action this turn for any reason, the spell ceases. Discard the spell card.
+A Spell has a Duration, as noted in the top-right corner of the card. If a Spell's duration is Instantaneous, it is cast immediately and does not have any lingering effects. If a Spell's Duration is Concentration, the Spell may last for as long as its caster is able and willing to Concentrate on it. If a Spell's Duration is Rounds, it lasts a number of combat rounds (detailed in the card's description). 
+
+If the Spell has a Rounds-based Duration, add a counter to the card at the beginning of each turn. 
+
+A Spell ends when one of the following conditions are met:
+- Immediately, if the Spell's Duration is Instantaneous
+- After the specified number of Rounds has elapsed if its Duration is Rounds
+- If the caster ceases to Concentrate on the spell, if its Duration is Concentration
+- Whenever the caster chooses to dismiss the spell
+
+Once a spell has ended, the spell card is discarded.
 
 #### Defence Cards (Green)
-**Defence** cards represent your character's capability to absorb or avoid damage in combat. 
+**Defence** cards represent your character's capability to absorb or avoid damage in combat. You may either play one Defence card from your hand or discard one in-play Defence card per turn. You may have as many Defence cards in play as you like, though you may only have one Defence card of each Type in play at any one time. Defence cards' effects are cumulative unless a specific card indicates otherwise.  
 
 #### Weapon Cards (Purple)
 **Weapon** cards represent an item in your character's possession that enhances one of their actions. Weapon cards are generally played attached to Attack or Spell cards, modifying the card's properties. If the card to which a Weapon card is attached is discarded, return the Weapon to your hand unless otherwise specified.
 
 #### Consumable Cards (Orange)
-**Consumable** cards represent a one or more consumables in your character's possession that may be used as thrown weapons or ammunition for an appropriate weapon. Consumable cards may be played attached to Weapon cards that specify an ammunition type, thereby enabling the weapon's attack. If the card to which a Consumable card is attached is discarded, also discard the Consumable.
+**Consumable** cards represent a one or more consumables in your character's possession that may be used as spell components, thrown weapons, or ammunition for an appropriate weapon. Consumable cards may be played attached to Weapon cards that specify an ammunition type, thereby enabling the weapon's attack. If the card to which a Consumable card is attached is discarded, also discard the Consumable.
 
 #### Ability Cards (Peach)
-**Ability** cards represent some supernatural power or combat feat known by your character. Once in-play, Ability cards may modify or grant some additional Actions your character can take. Ability cards may have finite permitted uses and, once expended, must be discarded.
+**Ability** cards represent some supernatural power or combat feat known by your character. Once in-play, Ability cards may modify or grant some additional Actions your character can take. If an Ability card has a Uses section and grants an Action, each time that Action is taken, place one counter on the Ability card. Once the number of Uses has been reached, discard the Ability card.
 
 #### Class Cards (Red)
 **Class** cards represent your character's unique class or racial meta-abilities. These cards are played straight from your hand and usually modify the state of the table rather than have direct effects on the in-game situation. Their stated effects happen immediately, and do not enter an in-play state. Once played, these cards are discarded.
 
 ### Card States
 A card is considered *active* if it is both in-play and not otherwise disabled. 
-
-A card can be turned on its side to indicate its effects are in-progress. 
 
 A card may have a number of basic counters placed on it to indicate how many uses or charges have been consumed or how much of its duration has elapsed.
 
