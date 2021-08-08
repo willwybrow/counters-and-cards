@@ -2,7 +2,7 @@ import re
 from enum import Enum
 from typing import List
 
-# 🎭🎯💡💪🏔🕮👊🏹🎓🎱📿🟋🗲🗰💥🔾🦉🧪🧠🧘🔮🔬🧫⚗🎔
+# 🎭🎯💡💪🏔🕮👊🏹🎓🎱📿🟋🗲🗰💥🔾🦉🧪🧠🧘🔮🔬🧫⚗🎔◉●⚆⬢⬣⬤⬆⚇
 
 class Ability(Enum):
     STR = '💪' # reddy brown
@@ -45,9 +45,9 @@ class StatWithValue:
 
 
 class ActionType(Enum):
-    REACTION_1 = '🗲'
-    ACTION_1 = '🔾'
-    ACTIONS_2 = '🔾🔾'
+    REACTION_1 = '🗲 Reaction'
+    ACTION_1 = '🔾 Action'
+    ACTIONS_2 = '🔾🔾 Actions'
 
     def __str__(self):
         return self.value

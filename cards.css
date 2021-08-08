@@ -130,11 +130,12 @@ article.playing-card[data-ability-requirement]>header:first-child {
 }
 
 article.playing-card[data-ability-requirement]>header:first-child:before {
-    width: 2.75em;
+    width: 72pt;
 	display: inline-block;
 	overflow: hidden;
 	text-align: center;
 	margin-right: 0.5em;
+	line-height: 36pt;
 	border-top-left-radius: 30pt;
 	border-bottom-right-radius: 30pt;
 }
@@ -308,7 +309,7 @@ article.playing-card[data-ability-requirement^=dex]>header:first-child:before {
 }
 
 article.playing-card[data-ability-requirement^=con]>header:first-child:before {
-    color: black;
+    color: white;
 }
 
 article.playing-card[data-ability-requirement^=wis]>header:first-child:before {
@@ -324,15 +325,15 @@ article.playing-card[data-ability-requirement^=cha]>header:first-child:before {
 }
 
 article.playing-card[data-ability-requirement$=minor]>header:first-child:before {
-    content: '●';
+    content: '◐';
 }
 
 article.playing-card[data-ability-requirement$=major]>header:first-child:before {
-    content: '●●';
+    content: '●';
 }
 
 article.playing-card[data-ability-requirement=any]>header:first-child:before {
-    content: '🟋';
+    content: '○';
     color: grey;
 }
 
