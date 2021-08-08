@@ -10,30 +10,25 @@ dice_re = re.compile(r'(\d+)d(\d+)([+-]\d+)')
 
 
 def generate():
-    soup = BeautifulSoup()
-    html = Tag(soup, None, "html")
+    soup = BeautifulSoup(features='html5lib')
+    html = Tag(name="html")
     soup.append(html)
-    head = Tag(soup, None, "head")
+    head = Tag(name="head")
     html.append(head)
-    title = Tag(soup, None, "title")
+    title = Tag(name="title")
     head.append(title)
     title_string = NavigableString("Card Folio")
     title.append(title_string)
-    link = Tag(soup, None, "link")
+    link = Tag(name="link", attrs={'rel': 'stylesheet', 'type': 'text/css', 'href': 'cards.css'})
     head.append(link)
-    link['rel'] = "stylesheet"
-    link['type'] = "text/css"
-    link['href'] = "cards.css"
 
-    body = Tag(soup, None, "body")
+    body = Tag(name="body")
     html.append(body)
 
-    """
-    for name in dir(cards):
-        if isinstance(getattr(cards, name), cards.Card):
-            body.append(generate_card(getattr(cards, name)))
-            """
+    for card in sorted([getattr(cards, name) for name in dir(cards) if isinstance(getattr(cards, name), cards.Card)], key=lambda c: c.label_type()):
+        body.append(generate_card(card))
 
+    """
     body.append(generate_card(cards.martial_prowess))
     body.append(generate_card(cards.spontaneous_healing))
     body.append(generate_card(cards.basic_attack))
@@ -65,10 +60,11 @@ def generate():
     body.append(generate_card(cards.mage_hand))
     body.append(generate_card(cards.improved_initiative_ability))
     body.append(generate_card(cards.improved_initiative_class))
+    """
 
     print(soup.prettify())
 
-    with codecs.open("card_folio_gen.html", mode="w") as file:
+    with codecs.open("card_folio.html", mode="w") as file:
         file.write(str(soup))
 
     print("Done")
@@ -141,8 +137,7 @@ def generate_description_line(description_line: str) -> Tag:
     return p_description
 
 def generate_card(card: cards.Card):
-    article = Tag(name="article")
-    article['class'] = 'playing-card'
+    article = Tag(name="article", attrs={'class': 'playing-card', 'data-ability-requirement': str(card.ability_requirement)})
     header = generate_header(card)
     article.append(header)
     article.append(generate_card_figure(card))

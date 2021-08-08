@@ -1,31 +1,40 @@
 # Counters and Cards
 
+Counters and Cards, or, C&C, is a replacement for a character sheet feature within the WyCor RPG system. It was created with the following intentions:
+- Make encounters less predictable by mixing up the actions available to a character
+- Express character progression in a more tangible way by adding new cards to a deck instead of just incrementing numbers
+- Stave off analysis paralysis on higher-level characters by restricting the available choices at any given moment  
+
 ## Setup
 
 ### Table Setup
 
-Each player has a conceptual play space directly in front of them which we will call the *table*.
+Each player has a conceptual play space directly in front of them, called the *table*.
 
 Each player has a *hand* of cards that they literally hold.
 
-Cards placed face-up on the table are considered to be *in-play*. A player may have a maximum of 7 cards in-play.
+On the table is a zone for cards that are having an active effect on the game. We call such cards *in-play* cards. Each player has 7 slots for placing new cards into play from their hand. Some cards are played *equipped* or *attached* to other cards. These attached cards count as being in play for the purposes of determining active effects and available actions, but no not count towards the 7 slot limit.
 
-A card may be *played*, meaning to place it from a player's hand into one of the player's 7 slots on the table.
+Also on the table is the *deck* containing the remainder of the player's available cards. This is placed face down and off to the side. The player will draw from the deck to place cards into their hand.
 
-Some cards may or must be *equipped* or *attached* to other cards. These cards are also considered to be in-play, but do not count towards the limit of in-play cards.
-
-Cards that have been expended, either because they are Class or Spell cards that are used once, or because they have a finite number of Uses per day, or because they've been discarded through some other effect, should be placed face-up into a single *discard pile*.
+Finally, each player has a *discard pile* of face up cards that are not in play. Cards that have been expended, either because they are Class or Spell cards that are used once, or because they have a finite number of Uses per day, or because they've been discarded through some other effect, should be placed face-up into this discard pile.
 
 ### Hand Setup
 
-At the start of your RPG *day*, shuffle all your cards into your deck and draw 7.
+At the start of your in-game *day*, shuffle all your cards into your deck and draw 7.
 
 If you do not draw any **Action** cards, shuffle all 7 cards back into the deck and draw 7 again.
+
+### Hand Resetting
+
+Between encounters, your character may, if it is safe to do so, take a *short rest*. Shuffle your current hand and any in-play Spell cards whose durations elapse during the rest, into your deck, then draw 7 cards.
+
+Between days, your character may take a *long rest*. Shuffle every card, including the discard pile, into your deck, then draw 7 cards.
 
 ## Gameplay
 
 ### Actions
-**Actions** may be performed by your character during a combat round. Each action has an action type that determines how long the action takes to perform (and therefore how many actions can be taken in a round):
+**Actions** may be performed by your character during a combat round. Each action has an action cost that determines how long the action takes to perform (and therefore how many actions can be taken in a round):
 - Standard
 - Move
 - Full-round
@@ -33,7 +42,7 @@ If you do not draw any **Action** cards, shuffle all 7 cards back into the deck 
 - Immediate
 - Free
 
-Cards that grant actions will have the action type in gold shown underneath the card's name.
+Cards that grant actions will have the action type in gold shown underneath the action's name.
 
 ### Cards
 
@@ -41,7 +50,7 @@ Cards have a number of different types:
 
 #### Action Cards (Silver)
 
-**Attack** cards represent a repeatable action that your character may do over and over again. Once in-play, Attack cards usually remain unless discarded by some other event. They frequently may be enhanced with **Weapon** cards.
+**Attack** cards represent an attack type that your character can make. Once in-play, Attack cards usually remain unless discarded by the player or by some other event. Attack cards can typically have **Weapon** cards attached to them, as long as the Weapon Type matches the Attack Type.
 
 **Action** cards represent actions that your character may take while in combat, but are not necessarily targeted attacks.
 
@@ -49,9 +58,6 @@ Cards have a number of different types:
 **Spell** cards represent a single instance of a magical capability your character possesses. Play a card from your hand to cast that spell. Like Actions, each Spell has an Action Cost, and a Spell can only be played if the player has sufficient Actions to cast it. 
 
 **Orison** and **Cantrip** cards are variations of Spell cards that are returned to your hand after casting.
-
-A spell's cast time is its action type. Therefore a spell with a casting time of Full-round cannot be cast in the same turn as a Move action is taken.
-
 
 A Spell has a Duration, as noted in the top-right corner of the card. If a Spell's duration is Instantaneous, it is cast immediately and does not have any lingering effects. If a Spell's Duration is Concentration, the Spell may last for as long as its caster is able and willing to Concentrate on it. If a Spell's Duration is Rounds, it lasts a number of combat rounds (detailed in the card's description). 
 

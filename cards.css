@@ -15,11 +15,49 @@ article.playing-card {
 	font-size: 24pt;
 	border-radius: 36pt;
 	padding: 6pt;
+	color: Black;
 	/* background: linear-gradient(127deg,#fce3ec,#ffe8cc); */
 	background-color: #FBABCE;
 	background-image: linear-gradient(62deg, #EBCBAE 0%, #E7DE88 100%);
 	flex-direction: column;
 	box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 3px;
+}
+
+article.playing-card[data-ability-requirement^=str] {
+    background: #403A3E;
+    background: linear-gradient(62deg, #BE5869, #403A3E);
+    color: Snow;
+}
+
+article.playing-card[data-ability-requirement^=dex] {
+    background: #76b852;
+    background: linear-gradient(62deg, #8DC26F, #76b852);
+}
+
+article.playing-card[data-ability-requirement^=con] {
+    background: #0F2027;
+    background: linear-gradient(62deg, #2C5364, #203A43, #0F2027);
+    color: Snow;
+}
+
+article.playing-card[data-ability-requirement^=int] {
+    background: #667db6;
+    background: linear-gradient(62deg, #667db6, #0082c8, #0082c8, #667db6);
+}
+
+article.playing-card[data-ability-requirement^=wis] {
+    background: #4568DC;
+    background: linear-gradient(62deg, #B06AB3, #4568DC);
+}
+
+article.playing-card[data-ability-requirement^=cha] {
+    background: #CAC531;
+    background: linear-gradient(62deg, #F3F9A7, #CAC531);
+}
+
+article.playing-card[data-ability-requirement^=any] {
+    background: #abbaab;
+    background: linear-gradient(62deg, #ffffff, #abbaab);
 }
 
 article.playing-card * {
@@ -79,6 +117,14 @@ article.playing-card>footer>aside {
 	top: -8pt;
 	background: linear-gradient(0deg,MidnightBlue,Indigo,MidnightBlue);
 	text-align: left;
+}
+
+article.playing-card[data-ability-requirement]>header:first-child:before {
+    width: 2.75em;
+	display: inline;
+	overflow: hidden;
+	text-align: center;
+	margin-right: 0.5em;
 }
 
 article.playing-card>header[data-type]:after {
@@ -196,11 +242,62 @@ article.playing-card>header[data-type=weapon]:after {
 }
 
 article.playing-card>header[data-type=ammunition]:after {
-	content: 'Ammo';
+	content: 'Ammunition';
 }
 
 article.playing-card>header[data-type=item]:after {
 	content: 'Item';
+}
+
+article.playing-card[data-ability-requirement=str-minor]>header:first-child:before {
+    content: '💪';
+}
+
+article.playing-card[data-ability-requirement=dex-minor]>header:first-child:before {
+    content: '🎯';
+}
+
+article.playing-card[data-ability-requirement=con-minor]>header:first-child:before {
+    content: '💗';
+}
+
+article.playing-card[data-ability-requirement=wis-minor]>header:first-child:before {
+    content: '🦉';
+}
+
+article.playing-card[data-ability-requirement=int-minor]>header:first-child:before {
+    content: '🎓';
+}
+
+article.playing-card[data-ability-requirement=cha-minor]>header:first-child:before {
+    content: '🎭';
+}
+article.playing-card[data-ability-requirement=str-major]>header:first-child:before {
+    content: '💪💪';
+}
+
+article.playing-card[data-ability-requirement=dex-major]>header:first-child:before {
+    content: '🎯🎯';
+}
+
+article.playing-card[data-ability-requirement=con-major]>header:first-child:before {
+    content: '💗💗';
+}
+
+article.playing-card[data-ability-requirement=wis-major]>header:first-child:before {
+    content: '🦉🦉';
+}
+
+article.playing-card[data-ability-requirement=int-major]>header:first-child:before {
+    content: '🎓🎓';
+}
+
+article.playing-card[data-ability-requirement=cha-major]>header:first-child:before {
+    content: '🎭🎭';
+}
+
+article.playing-card[data-ability-requirement=any]>header:first-child:before {
+    content: '🟋';
 }
 
 article.playing-card>header>aside.action-type {

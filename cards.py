@@ -2,6 +2,36 @@ import re
 from enum import Enum
 from typing import List
 
+# 🎭🎯💡💪🏔🕮👊🏹🎓🎱📿🟋🗲🗰💥🔾🦉🧪🧠🧘🔮🔬🧫⚗🎔
+
+class Ability(Enum):
+    STR = '💪' # reddy brown
+    DEX = '🎯' # green
+    CON = '🏔' # black
+    WIS = '🦉' # purple
+    INT = '🎓' # blue, studious
+    CHA = '🎭' # yellow
+
+    def __str__(self):
+        return self.value
+
+class AbilityRequirement(Enum):
+    MAJOR_STR = [Ability.STR, Ability.STR]
+    MINOR_STR = [Ability.STR]
+    MAJOR_DEX = [Ability.DEX, Ability.DEX]
+    MINOR_DEX = [Ability.DEX]
+    MAJOR_CON = [Ability.CON, Ability.CON]
+    MINOR_CON = [Ability.CON]
+    MAJOR_WIS = [Ability.WIS, Ability.WIS]
+    MINOR_WIS = [Ability.WIS]
+    MAJOR_INT = [Ability.INT, Ability.INT]
+    MINOR_INT = [Ability.INT]
+    MAJOR_CHA = [Ability.CHA, Ability.CHA]
+    MINOR_CHA = [Ability.CHA]
+    ANY = []
+
+    def __str__(self):
+        return "-".join(reversed(self.name.split('_'))).lower()
 
 class StatWithValue:
     stat = None
@@ -15,14 +45,12 @@ class StatWithValue:
 
 
 class ActionType(Enum):
-    IMMEDIATE = 1
-    SWIFT = 2
-    MOVE = 3
-    STANDARD = 4
-    FULL_ROUND = 5
+    REACTION_1 = '🗲'
+    ACTION_1 = '🔾'
+    ACTIONS_2 = '🔾🔾'
 
     def __str__(self):
-        return "-".join(self.name.split('_')).title()
+        return self.value
 
 
 class CastingDuration(Enum):
@@ -78,9 +106,10 @@ class Card(Labelled):
     stat_blocks: List[StatWithValue] = []
     special_quote: str = None
 
-    def __init__(self, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
+    def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
                  stat_blocks: List[StatWithValue], **kwargs):
         Labelled.__init__(self, name, sub_type)
+        self.ability_requirement = ability_requirement
         self.flavour = flavour
         self.description = description
         self.grants_actions = grants_actions
@@ -99,59 +128,60 @@ class ActionCard(Action, Card):
 
 
 class ClassCard(Card):
-    def __init__(self, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
+    def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
                  stat_blocks: List[StatWithValue], **kwargs):
-        super().__init__(name, sub_type, flavour, description, grants_actions, stat_blocks, **kwargs)
+        super().__init__(ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks, **kwargs)
 
 
 class AttackCard(Attack, Card):
-    def __init__(self, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
+    def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
                  stat_blocks: List[StatWithValue], action_type: ActionType):
         Attack.__init__(self, name, action_type, sub_type, description, stat_blocks)
-        Card.__init__(self, name, sub_type, flavour, description, grants_actions, stat_blocks)
+        Card.__init__(self, ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks)
 
 
 class DefenceCard(Card):
-    def __init__(self, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
+    def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
                  stat_blocks: List[StatWithValue], **kwargs):
-        super().__init__(name, sub_type, flavour, description, grants_actions, stat_blocks, **kwargs)
+        super().__init__(ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks, **kwargs)
 
 
 class SpellCard(Spell, Card):
-    def __init__(self, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
+    def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
                  stat_blocks: List[StatWithValue], action_type: ActionType, spell_duration: CastingDuration):
-        Card.__init__(self, name, sub_type, flavour, description, grants_actions, stat_blocks)
+        Card.__init__(self, ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks)
         Spell.__init__(self, name, action_type, sub_type, description, stat_blocks, spell_duration)
 
 
 class CantripCard(SpellCard):
-    def __init__(self, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
+    def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
                  stat_blocks: List[StatWithValue], action_type: ActionType, spell_duration: CastingDuration):
-        super().__init__(name, sub_type, flavour, description, grants_actions, stat_blocks, action_type, spell_duration)
+        super().__init__(ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks, action_type, spell_duration)
 
 
 class AbilityCard(Card):
-    def __init__(self, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
+    def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
                  stat_blocks: List[StatWithValue], **kwargs):
-        super().__init__(name, sub_type, flavour, description, grants_actions, stat_blocks, **kwargs)
+        super().__init__(ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks, **kwargs)
 
 
 class WeaponCard(Card):
     ammo_type: str
 
-    def __init__(self, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
+    def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
                  stat_blocks: List[StatWithValue], ammo_type: str = None):
-        super().__init__(name, sub_type, flavour, description, grants_actions, stat_blocks)
+        super().__init__(ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks)
         self.ammo_type = ammo_type
 
 
 class AmmunitionCard(Card):
-    def __init__(self, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
+    def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
                  stat_blocks: List[StatWithValue]):
-        super().__init__(name, sub_type, flavour, description, grants_actions, stat_blocks)
+        super().__init__(ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks)
 
 
 martial_prowess = ClassCard(
+    AbilityRequirement.MINOR_STR,
     "Martial Prowess",
     "class",
     "Your skill in combat in unparallelled amongst your peers",
@@ -163,6 +193,7 @@ martial_prowess = ClassCard(
 )
 
 spontaneous_healing = ClassCard(
+    AbilityRequirement.MINOR_WIS,
     "Spontaneous Healing",
     "class",
     "Your proclivity for healing others manifests in your spellcasting",
@@ -174,6 +205,7 @@ spontaneous_healing = ClassCard(
 )
 
 basic_attack = AttackCard(
+    AbilityRequirement.ANY,
     "Basic Attack",
     "melee",
     None,
@@ -185,10 +217,11 @@ basic_attack = AttackCard(
         StatWithValue("To-hit", "+1"),
         StatWithValue("Damage", "1d3", "NL")
     ],
-    ActionType.STANDARD
+    ActionType.ACTION_1
 )
 
 heavy_wooden_shield = DefenceCard(
+    AbilityRequirement.MAJOR_STR,
     "Shield, Heavy Wooden",
     "shield",
     None,
@@ -200,6 +233,7 @@ heavy_wooden_shield = DefenceCard(
     ]
 )
 chain_shirt = DefenceCard(
+    AbilityRequirement.MINOR_STR,
     "Chain Shirt",
     "armour",
     None,
@@ -211,6 +245,7 @@ chain_shirt = DefenceCard(
 )
 
 sturdy_shield = WeaponCard(
+    AbilityRequirement.MINOR_STR,
     "Sturdy Shield",
     "buckler",
     None,
@@ -219,7 +254,7 @@ sturdy_shield = WeaponCard(
     ], [
         Attack(
             "Shield Bash",
-            ActionType.STANDARD,
+            ActionType.ACTION_1,
             "melee",
             [],
             [
@@ -232,6 +267,7 @@ sturdy_shield = WeaponCard(
 )
 
 greataxe = WeaponCard(
+    AbilityRequirement.MAJOR_STR,
     "Greataxe",
     "two-handed",
     "This enormous, double-headed axe looks like it takes substantial strength to even lift, let alone swing",
@@ -243,6 +279,7 @@ greataxe = WeaponCard(
 )
 
 blowgun = WeaponCard(
+    AbilityRequirement.MINOR_DEX,
     "Blowgun",
     "two-handed",
     None,
@@ -257,6 +294,7 @@ blowgun = WeaponCard(
 )
 
 feathered_dart = AmmunitionCard(
+    AbilityRequirement.ANY,
     "Feathered Dart",
     "dart",
     None,
@@ -269,6 +307,7 @@ feathered_dart = AmmunitionCard(
 )
 
 sunder = AttackCard(
+    AbilityRequirement.MINOR_STR,
     "Sunder",
     "combat manoeuvre",
     None,
@@ -281,10 +320,11 @@ sunder = AttackCard(
         StatWithValue("CMB", "+1"),
         StatWithValue("CMD", "11")
     ],
-    ActionType.STANDARD
+    ActionType.ACTION_1
 )
 
 opportune_combatant = AbilityCard(
+    AbilityRequirement.ANY,
     "Opportune Combatant",
     "feat",
     None,
@@ -293,7 +333,7 @@ opportune_combatant = AbilityCard(
     ],[
         Attack(
             "Attack of Opportunity",
-            ActionType.IMMEDIATE,
+            ActionType.REACTION_1,
             "melee",
             [
                 "Make an Attack with an Action cost of Standard or less granted by in-play cards (other than this one)"
@@ -307,6 +347,7 @@ opportune_combatant = AbilityCard(
 )
 
 double_swing = AttackCard(
+    AbilityRequirement.MINOR_STR,
     "Double Swing",
     "melee",
     None,
@@ -317,10 +358,11 @@ double_swing = AttackCard(
     [
         StatWithValue("To-hit", "+2/+0")
     ],
-    ActionType.FULL_ROUND
+    ActionType.ACTIONS_2
 )
 
 two_weapon_fighting = AttackCard(
+    AbilityRequirement.MINOR_DEX,
     "Two-Weapon Fighting",
     "melee",
     None,
@@ -332,24 +374,43 @@ two_weapon_fighting = AttackCard(
     [
         StatWithValue("To-hit", "+2/+0")
     ],
-    ActionType.FULL_ROUND
+    ActionType.ACTIONS_2
 )
 
-disarm = AttackCard("Disarm", "combat manoeuvre", None, [
+disarm = AttackCard(
+    AbilityRequirement.MINOR_DEX,
+    "Disarm",
+    "combat manoeuvre",
+    None,
+    [
     "Make a Combat Manoeuvre check against an enemy. If successful, return the Weapon card to the player's hand",
-    "While this card is in play, if you are the subject of a Disarm attack, use the CMD granted by this card"], [], [
+    "While this card is in play, if you are the subject of a Disarm attack, use the CMD granted by this card"
+    ],
+    [],
+    [
                         StatWithValue("CMB", "+1"),
                         StatWithValue("CMD", "11")
-                    ], ActionType.STANDARD)
 
-power_attack = AbilityCard("Power Attack", "feat", None, [
+                    ],
+    ActionType.ACTION_1
+)
+
+power_attack = AbilityCard(
+    AbilityRequirement.MAJOR_STR,
+    "Power Attack",
+    "feat",
+    None,
+    [
     "Return an in-play Defence card to your hand. If you have no Defence cards in play, you cannot play this card. When you take your Action, any Attack you make is subject to the following Stat modifications:"],
-                           [], [
+                           [],
+    [
                                StatWithValue("To-hit", "-1"),
                                StatWithValue("Damage", "+2")
-                           ])
+                           ]
+)
 
 combat_expertise = AbilityCard(
+    AbilityRequirement.MINOR_CON,
     "Combat Expertise",
     "feat",
     None,
@@ -363,6 +424,7 @@ combat_expertise = AbilityCard(
 )
 
 acid_splash = CantripCard(
+    AbilityRequirement.MINOR_INT,
     "Acid Splash",
     "conjuration",
     "You hurl a few flecks of acid at an enemy",
@@ -375,11 +437,12 @@ acid_splash = CantripCard(
         StatWithValue("Damage", "1d3", "Acid"),
         StatWithValue("Range", "25", "FT")
     ],
-    ActionType.STANDARD,
+    ActionType.ACTION_1,
     CastingDuration.INSTANTANEOUS
 )
 
 bonus_arcane_power = AbilityCard(
+    AbilityRequirement.MAJOR_INT,
     "Bonus Arcane Power",
     "class feature",
     None,
@@ -390,7 +453,7 @@ bonus_arcane_power = AbilityCard(
     [
         Spell(
             "Arcane Specialism: Evocation",
-            ActionType.STANDARD,
+            ActionType.ACTION_1,
             "evocation",
             [
                 "Cast the Spell attached to this card. When you discard the Spell, also discard this card"
@@ -403,6 +466,7 @@ bonus_arcane_power = AbilityCard(
 )
 
 bonded_object = AttackCard(
+    AbilityRequirement.MAJOR_INT,
     "Bonded Object",
     "spellcast",
     None,
@@ -411,10 +475,11 @@ bonded_object = AttackCard(
     ],
     [],
     [],
-    ActionType.STANDARD
+    ActionType.ACTION_1
 )
 
 shield_spell = SpellCard(
+    AbilityRequirement.MINOR_INT,
     "Shield",
     "abjuration",
     "You summon a shimmering disc of force between you and your enemies",
@@ -427,11 +492,12 @@ shield_spell = SpellCard(
         StatWithValue("AC", "+4"),
         StatWithValue("Duration", "10", "rounds")
     ],
-    ActionType.STANDARD,
+    ActionType.ACTION_1,
     CastingDuration.ROUNDS
 )
 
 defensive_training = DefenceCard(
+    AbilityRequirement.ANY,
     "Defensive Training",
     "racial",
     "Raised amongst the Gnomes, you have had many intensive lessons on how to avoid trouble from the bigger folk",
@@ -446,6 +512,7 @@ defensive_training = DefenceCard(
 )
 
 reckless_warrior = ClassCard(
+    AbilityRequirement.MINOR_STR,
     "Reckless Warrior",
     "class",
     None,
@@ -457,6 +524,7 @@ reckless_warrior = ClassCard(
 )
 
 prepared_spellcaster = ClassCard(
+    AbilityRequirement.MINOR_INT,
     "Prepared Spellcaster",
     "class",
     None,
@@ -468,6 +536,7 @@ prepared_spellcaster = ClassCard(
 )
 
 spontaneous_spellcaster = ClassCard(
+    AbilityRequirement.MINOR_CHA,
     "Spontaneous Spellcaster",
     "class",
     None,
@@ -479,6 +548,7 @@ spontaneous_spellcaster = ClassCard(
 )
 
 force_missile = AbilityCard(
+    AbilityRequirement.ANY,
     "Force Missile",
     "spell-like",
     None,
@@ -489,7 +559,7 @@ force_missile = AbilityCard(
     [
         Spell(
             "Magic Missile",
-            ActionType.STANDARD,
+            ActionType.ACTION_1,
             "evocation",
             [
                 "The effects and Stats of this Spell are per the attached Spell card with the name Magic Missile"
@@ -503,6 +573,7 @@ force_missile = AbilityCard(
 )
 
 channel_positive_energy = AbilityCard(
+    AbilityRequirement.MAJOR_WIS,
     "Channel Positive Energy",
     "supernatural",
     None,
@@ -512,7 +583,7 @@ channel_positive_energy = AbilityCard(
     [
         Action(
             "Channel Positive Energy",
-            ActionType.STANDARD,
+            ActionType.ACTION_1,
             "supernatural",
             [
                 "You infuse living creatures in the area with positive energy, restoring their health"
@@ -524,7 +595,7 @@ channel_positive_energy = AbilityCard(
         ),
         Action(
             "Channel Positive Energy",
-            ActionType.STANDARD,
+            ActionType.ACTION_1,
             "supernatural",
             [
                 "You blast undead creatures in the area with positive energy, depleting their unlife"
@@ -542,6 +613,7 @@ channel_positive_energy = AbilityCard(
 )
 
 magic_missile_1 = SpellCard(
+    AbilityRequirement.MINOR_INT,
     "Magic Missile",
     "evocation",
     "A missile of magical energy emerges from your fingertips and seeks its target unerringly",
@@ -552,11 +624,12 @@ magic_missile_1 = SpellCard(
         StatWithValue("Range", "100", "ft"),
         StatWithValue("Damage", "1d4+1", "Force")
     ],
-    ActionType.STANDARD,
+    ActionType.ACTION_1,
     CastingDuration.INSTANTANEOUS
 )
 
 flare = CantripCard(
+    AbilityRequirement.MINOR_INT,
     "Flare",
     "evocation",
     None,
@@ -569,11 +642,12 @@ flare = CantripCard(
         StatWithValue("Save", "DC11", "Fort"),
         StatWithValue("Duration", "10", "rounds")
     ],
-    ActionType.STANDARD,
+    ActionType.ACTION_1,
     CastingDuration.ROUNDS
 )
 
 mage_hand = CantripCard(
+    AbilityRequirement.MINOR_INT,
     "Mage Hand",
     "transmutation",
     None,
@@ -584,11 +658,12 @@ mage_hand = CantripCard(
     [
         StatWithValue("Range", "25", "ft")
     ],
-    ActionType.STANDARD,
+    ActionType.ACTION_1,
     CastingDuration.CONCENTRATION
 )
 
 improved_initiative_ability = AbilityCard(
+    AbilityRequirement.MINOR_DEX,
     "Improved Initiative",
     "feat",
     "Your reactions are quicker than most",
@@ -602,6 +677,7 @@ improved_initiative_ability = AbilityCard(
 )
 
 improved_initiative_class = ClassCard(
+    AbilityRequirement.MINOR_DEX,
     "Improved Initiative",
     "class",
     "Your reactions are quicker than most",
