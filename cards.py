@@ -236,7 +236,7 @@ chain_shirt = DefenceCard(
     AbilityRequirement.MINOR_STR,
     "Chain Shirt",
     "armour",
-    None,
+    "The links on this chainmail are tiny and delicate-looking, but made of the strongest mythril ever mined",
     [],
     [],
     [
@@ -409,19 +409,6 @@ power_attack = AbilityCard(
                            ]
 )
 
-combat_expertise = AbilityCard(
-    AbilityRequirement.MINOR_CON,
-    "Combat Expertise",
-    "feat",
-    None,
-    [
-        "You may attach a Defence card from your hand to this card. You may ignore the usual maximum of one Defence card of each type. On each turn, before you take an Action, you must decide whether or not the attached Defence card counts as in-play for this turn. If the attached Defence card is in-play, any Attack actions are subject to the following Stat modifications:"
-    ],
-    [],
-    [
-        StatWithValue("To-hit", "-1")
-    ]
-)
 
 acid_splash = CantripCard(
     AbilityRequirement.MINOR_INT,
@@ -439,6 +426,20 @@ acid_splash = CantripCard(
     ],
     ActionType.ACTION_1,
     CastingDuration.INSTANTANEOUS
+)
+combat_expertise = AbilityCard(
+    AbilityRequirement.MINOR_CON,
+    "Combat Expertise",
+    "feat",
+    None,
+    [
+        "You may attach a Defence card from your hand to this card. This Defence card does not count towards the usual maximum of one per Type",
+        "On each turn, before you take an Action, you must decide whether or not the attached Defence card counts as in-play for this turn. If the attached Defence card is in-play, any Attack actions are subject to the following Stat modifications:"
+    ],
+    [],
+    [
+        StatWithValue("To-hit", "-1")
+    ]
 )
 
 bonus_arcane_power = AbilityCard(
