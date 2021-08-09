@@ -1,0 +1,8 @@
+beautifulsoup4==4.9.3
+html5lib==1.1
+lxml==4.6.3
+prettierfier==1.0.3
+PyYAML==5.4.1
+six==1.16.0
+soupsieve==2.2.1
+webencodings==0.5.1
