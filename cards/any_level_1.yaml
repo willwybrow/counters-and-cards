@@ -1,0 +1,77 @@
+cards:
+  - name: Basic Attack
+    type: attack
+    sub-type: melee
+    action-cost:
+      action: 1
+      reaction: 0
+    requirements:
+      ability: any
+      level: 1
+    description:
+      - Select one creature within Reach to whom you have line of sight. You make a melee attack against that creature
+    stat-blocks:
+      - name: Reach
+        value: 5
+        unit: ft
+      - name: Damage
+        value: 1d6+level
+        unit: B
+  - name: Ranged Attack
+    type: attack
+    sub-type: ranged
+    action-cost:
+      action: 1
+      reaction: 0
+    requirements:
+      ability: any
+      level: 1
+    description:
+      - There must be a suitably hefty object in your character's hand or reachable without expending any 🔾 Action on movement
+      - Select one creature within Range to whom you have line of sight. You toss your held item at that creature
+    stat-blocks:
+      - name: Damage
+        value: 1d4+level
+        unit: B
+  - name: Opportune Combatant
+    type: ability
+    sub-type: feat
+    requirements:
+      ability: any
+      level: 1
+    description:
+      - If an enemy passes through a square within your Reach, you may take the Attack of Opportunity Action. Each time you do this, one Use of this card is consumed
+    stat-blocks:
+      - name: Uses
+        value: □ □ □ □ □ □ □ □
+    granted-actions:
+      - name: Attack of Opportunity
+        type: attack
+        sub-type: melee
+        action-cost:
+          reaction: 1
+        description:
+          - Make a melee Attack with a Cost of 1 🔾 Action or less granted by an in-play card (other than this one)
+  - name: Defend
+    type: action
+    sub-type: defensive
+    action-cost:
+      action: 0
+      reaction: 1
+    requirements:
+      ability: any
+      level: 1
+    description:
+      - React to incoming attacks by dodging, blocking, or feinting. Upon being declared the subject of a melee attack you may choose to react in a defensive manner
+      - Negate half of the damage done by the incoming attack
+  - name: Withdraw
+    type: action
+    sub-type: movement
+    action-cost:
+      action: 1
+      reaction: 1
+    requirements:
+      ability: any
+      level: 1
+    description:
+      - By using up your own 🗲 Reaction along with 1 🔾 Action, you may move up to your Speed (through terrain that Speed concerns) in a straight line without triggering any Attacks that cost 1 🗲 Reaction to perform

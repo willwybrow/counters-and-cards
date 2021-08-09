@@ -1,0 +1,20 @@
+cards:
+  - name: Superior Hand-Eye Coordination
+    type: defence
+    sub-type: reflex
+    requirements:
+      ability: dex
+      advantage: major
+      level: 5
+    description:
+      - "Whenever another creature is making a Ranged Attack against you, gain access to the following Reaction:"
+    flavour: Bat an incoming projectile out of the way using your superior reflexes
+    granted-actions:
+      - name: Deflect Arrows
+        type: action
+        sub-type: defensive
+        description:
+          - Negate the damage and secondary effects of the ranged attack being made against you
+        action-cost:
+          action: 0
+          reaction: 1

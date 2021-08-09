@@ -10,8 +10,10 @@ from bs4 import Tag, BeautifulSoup, NavigableString
 modifier_re = re.compile(r'([+-]\d+)')
 dice_re = re.compile(r'(\d+)d(\d+)([+-]\d+)')
 
+def get_all_cards():
+    return sorted([getattr(cards, name) for name in dir(cards) if isinstance(getattr(cards, name), cards.Card)], key=lambda c: c.label_type())
 
-def generate():
+def generate(cards_to_generate: List[cards.Card]) -> BeautifulSoup:
     soup = BeautifulSoup()
     html = Tag(name="html")
     soup.append(html)
@@ -27,7 +29,7 @@ def generate():
     body = Tag(name="body")
     html.append(body)
 
-    for card in sorted([getattr(cards, name) for name in dir(cards) if isinstance(getattr(cards, name), cards.Card)], key=lambda c: c.label_type()):
+    for card in cards_to_generate:
         body.append(generate_card(card))
 
     """
@@ -64,12 +66,7 @@ def generate():
     body.append(generate_card(cards.improved_initiative_class))
     """
 
-    print(soup.prettify())
-
-    with codecs.open("card_folio.html", mode="w") as file:
-        file.write(prettify_html(soup.prettify()))
-
-    print("Done")
+    return soup
 
 
 def generate_header(headable_thing: Union[cards.Card, cards.Action]) -> Tag:
@@ -90,11 +87,11 @@ def generate_header(headable_thing: Union[cards.Card, cards.Action]) -> Tag:
 
 def generate_card_figure(card: cards.Card) -> Tag:
     figure = generate_sub_figure(card)
-    if card.full_image:
+    if card.full_image is not None:
         pass
-    else:
+    elif card.feature_image is not None:
         figure.insert(0, Tag(name="img", attrs={
-            'src': "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAD8AAAAhCAIAAADh4eRjAAABhWlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw1AUhU9bpUUqDlYQcchQXbRQVMRRq1CECqFWaNXB5KV/0KQhSXFxFFwLDv4sVh1cnHV1cBUEwR8QNzcnRRcp8b6k0CLGC4/3cd49h/fuA/yNClPNrjigapaRTiaEbG5VCL4iBB8GMIa4xEx9ThRT8Kyve+qluovxLO++P6tXyZsM8AnEs0w3LOIN4ulNS+e8TxxhJUkhPiceN+iCxI9cl11+41x02M8zI0YmPU8cIRaKHSx3MCsZKvEUcVRRNcr3Z11WOG9xVis11ronf2E4r60sc53WMJJYxBJECJBRQxkVWIjRrpFiIk3nCQ//kOMXySWTqwxGjgVUoUJy/OB/8Hu2ZmFywk0KJ4DuF9v+GAGCu0Czbtvfx7bdPAECz8CV1vZXG8DMJ+n1thY9Avq2gYvrtibvAZc7wOCTLhmSIwVo+QsF4P2MvikH9N8CPWvu3FrnOH0AMjSr1A1wcAiMFil73ePdoc65/dvTmt8Pmqtyt9oCiM8AAAAJcEhZcwAALiMAAC4jAXilP3YAAAAHdElNRQflCAEVLgATe2SCAAAAGXRFWHRDb21tZW50AENyZWF0ZWQgd2l0aCBHSU1QV4EOFwAAADlJREFUWMPtzjENADAIADCYf4Oc/IiYDkiroFnTsdaLzezt7e3t7e3t7e3t7e3t7e3t7e3t7e1v7j8dGALo1+za6wAAAABJRU5ErkJggg=="
+            'src': "data:image/{};base64, {}".format(card.feature_image.mime_type, card.feature_image.base64_data)
         }))
     return figure
 
@@ -138,8 +135,21 @@ def generate_description_line(description_line: str) -> Tag:
             p_description.append(p_description_string)
     return p_description
 
+def generate_footer(card: cards.Card) -> Tag:
+    footer = Tag(name="footer")
+    h3 = Tag(name="h3", attrs={'class': 'level-requirement'})
+    h3.append(NavigableString(str(card.level_requirement)))
+    footer.append(h3)
+    if isinstance(card, cards.WeaponCard) and card.ammo_type is not None:
+        aside = Tag(name="aside", attrs={"class": "ammunition"})
+        aside.append(NavigableString(card.ammo_type))
+        footer.append(aside)
+    return footer
+
 def generate_card(card: cards.Card):
     article = Tag(name="article", attrs={'class': 'playing-card', 'data-ability-requirement': str(card.ability_requirement)})
+    if card.full_image is not None:
+        article['style'] = 'background-blend-mode: exclusion; background-image: url("data:image/{};base64,{}"); background-size: cover; background;'.format(card.full_image.mime_type, card.full_image.base64_data)
     header = generate_header(card)
     article.append(header)
     article.append(generate_card_figure(card))
@@ -165,14 +175,18 @@ def generate_card(card: cards.Card):
         [action_section.append(generate_description_line(description_line)) for description_line in granted_action.description]
         [action_section.append(swv_section) for swv_section in generate_stats_with_values(granted_action.stat_blocks)]
         article.append(action_section)
-    footer = Tag(name="footer")
-    article.append(footer)
-    if isinstance(card, cards.WeaponCard) and card.ammo_type is not None:
-        aside = Tag(name="aside", attrs={"class": "ammunition"})
-        aside.append(NavigableString(card.ammo_type))
-        footer.append(aside)
+    article.append(generate_footer(card))
     return article
 
+def generate_card_folio(cards_to_generate: List[cards.Card]):
+    soup = generate(cards_to_generate)
+
+    print(soup.prettify())
+
+    with codecs.open("card_folio.html", mode="w") as file:
+        file.write(prettify_html(soup.prettify()))
+
+    print("Done")
 
 if __name__ == "__main__":
-    generate()
+    generate_card_folio(get_all_cards())

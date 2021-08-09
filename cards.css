@@ -19,7 +19,6 @@ article.playing-card {
 	border-style: solid;
 	padding: 0pt;
 	color: Black;
-	/* background: linear-gradient(127deg,#fce3ec,#ffe8cc); */
 	background-color: #FBABCE;
 	background-image: linear-gradient(62deg, #EBCBAE 0%, #E7DE88 100%);
 	flex-direction: column;
@@ -27,41 +26,41 @@ article.playing-card {
 }
 
 article.playing-card[data-ability-requirement^=str] {
-    background: #403A3E;
-    background: linear-gradient(62deg, #BE5869, #403A3E);
+    background-color: #403A3E;
+    background-image: linear-gradient(62deg, #BE5869, #403A3E);
     color: Snow;
 }
 
 article.playing-card[data-ability-requirement^=dex] {
-    background: #1D976C;
-    background: linear-gradient(62deg, #93F9B9, #1D976C);
+    background-color: #1D976C;
+    background-image: linear-gradient(62deg, #93F9B9, #1D976C);
 }
 
 article.playing-card[data-ability-requirement^=con] {
-    background: #0F2027;
-    background: linear-gradient(62deg, #2C5364, #203A43, #0F2027);
+    background-color: #0F2027;
+    background-image: linear-gradient(62deg, #2C5364, #203A43, #0F2027);
     color: Snow;
 }
 
 article.playing-card[data-ability-requirement^=int] {
-    background: #74ebd5;
-    background: linear-gradient(62deg, #ACB6E5, #74ebd5);
+    background-color: #74ebd5;
+    background-image: linear-gradient(62deg, #ACB6E5, #74ebd5);
 }
 
 article.playing-card[data-ability-requirement^=wis] {
-    background: #B993D6;
-    background: linear-gradient(62deg, #8CA6DB, #B993D6);
+    background-color: #B993D6;
+    background-image: linear-gradient(62deg, #8CA6DB, #B993D6);
 
 }
 
 article.playing-card[data-ability-requirement^=cha] {
-    background: #CAC531;
-    background: linear-gradient(62deg, #F3F9A7, #CAC531);
+    background-color: #CAC531;
+    background-image: linear-gradient(62deg, #F3F9A7, #CAC531);
 }
 
 article.playing-card[data-ability-requirement^=any] {
-    background: #abbaab;
-    background: linear-gradient(62deg, #ffffff, #abbaab);
+    background-color: #abbaab;
+    background-image: linear-gradient(62deg, #ffffff, #abbaab);
 }
 
 article.playing-card * {
@@ -107,13 +106,27 @@ article.playing-card>footer {
 	position: relative;
 	border-bottom-left-radius: 30pt;
 	border-bottom-right-radius: 30pt;
-	padding-left: 30pt;
 	background-color: DarkSlateGray;
 	height: 40pt;
 	line-height: 40pt;
 	color: Snow;
 	display: flex;
 	flex-direction: row;
+}
+
+article.playing-card>footer>h3.level-requirement {
+	font-size: 70%;
+	padding: 0 26pt;
+	margin: 0;
+	font-weight: bold;
+	display: flex;
+	flex-grow: 0;
+}
+
+article.playing-card>footer>h3.level-requirement:before {
+	content: 'Lv. ';
+	font-weight: 100;
+	margin-right: 3pt;
 }
 
 article.playing-card>footer>aside {
@@ -393,23 +406,28 @@ article.playing-card>figure>figcaption {
 	height: 30pt;
 	padding: 0;
 	margin: 0;
+	display: block;
+	background-color: rgb(255, 255, 255, 0.2);
+	border-bottom-left-radius: 30pt;
+	border-bottom-right-radius: 30pt;
+	display: flex;
+	flex-direction: row;
 }
 
-article.playing-card>figure>figcaption>h2 {
+article.playing-card>figure>figcaption>h2.type {
 	font-size: 70%;
 	line-height: 30pt;
 	padding: 0 26pt;
 	margin: 0;
 	font-weight: bold;
-	display: block;
-	background-color: rgb(255, 255, 255, 0.2);
-	border-bottom-left-radius: 30pt;
-	border-bottom-right-radius: 30pt;
+	display: flex;
+	flex-grow: 0;
 }
 
-article.playing-card>figure>figcaption>h2:before {
+article.playing-card>figure>figcaption>h2.type:before {
 	content: 'Type: ';
 	font-weight: 100;
+	margin-right: 3pt;
 }
 
 article.playing-card>section {

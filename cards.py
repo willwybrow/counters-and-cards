@@ -44,13 +44,15 @@ class StatWithValue:
         self.unit = unit
 
 
-class ActionType(Enum):
-    REACTION_1 = '🗲 Reaction'
-    ACTION_1 = '🔾 Action'
-    ACTIONS_2 = '🔾🔾 Actions'
-
+class ActionCost:
+    def __init__(self, action: int = 0, reaction: int = 0):
+        self.action = action
+        self.reaction = reaction
+        if (self.reaction + self.action) <= 0:
+            raise TypeError("Action must cost at least 1 Action or Reaction")
+        
     def __str__(self):
-        return self.value
+        return "".join(["🔾"] * self.action + ["🗲"] * self.reaction)
 
 
 class CastingDuration(Enum):
@@ -62,8 +64,17 @@ class CastingDuration(Enum):
     def __str__(self):
         return self.name.title()
 
+class Image:
+    mime_type: str
+    base64_data: str
+
+    def __init__(self, mime_type: str = "png", base64_data: str = "iVBORw0KGgoAAAANSUhEUgAAAD8AAAAhCAIAAADh4eRjAAABhWlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw1AUhU9bpUUqDlYQcchQXbRQVMRRq1CECqFWaNXB5KV/0KQhSXFxFFwLDv4sVh1cnHV1cBUEwR8QNzcnRRcp8b6k0CLGC4/3cd49h/fuA/yNClPNrjigapaRTiaEbG5VCL4iBB8GMIa4xEx9ThRT8Kyve+qluovxLO++P6tXyZsM8AnEs0w3LOIN4ulNS+e8TxxhJUkhPiceN+iCxI9cl11+41x02M8zI0YmPU8cIRaKHSx3MCsZKvEUcVRRNcr3Z11WOG9xVis11ronf2E4r60sc53WMJJYxBJECJBRQxkVWIjRrpFiIk3nCQ//kOMXySWTqwxGjgVUoUJy/OB/8Hu2ZmFywk0KJ4DuF9v+GAGCu0Czbtvfx7bdPAECz8CV1vZXG8DMJ+n1thY9Avq2gYvrtibvAZc7wOCTLhmSIwVo+QsF4P2MvikH9N8CPWvu3FrnOH0AMjSr1A1wcAiMFil73ePdoc65/dvTmt8Pmqtyt9oCiM8AAAAJcEhZcwAALiMAAC4jAXilP3YAAAAHdElNRQflCAEVLgATe2SCAAAAGXRFWHRDb21tZW50AENyZWF0ZWQgd2l0aCBHSU1QV4EOFwAAADlJREFUWMPtzjENADAIADCYf4Oc/IiYDkiroFnTsdaLzezt7e3t7e3t7e3t7e3t7e3t7e3t7e1v7j8dGALo1+za6wAAAABJRU5ErkJggg=="):
+        self.mime_type = mime_type
+        self.base64_data = base64_data
+
 class Labelled:
     name: str
+    type: str
 
     def __init__(self, name: str, sub_type: str):
         self.sub_type = sub_type
@@ -73,9 +84,9 @@ class Labelled:
         return re.sub(r'Card$', '', self.__class__.__name__).lower()
 
 class Action(Labelled):
-    action_type: ActionType
+    action_type: ActionCost
 
-    def __init__(self, name: str, action_type: ActionType, sub_type: str, description: List[str],
+    def __init__(self, name: str, action_type: ActionCost, sub_type: str, description: List[str],
                  stat_blocks: List[StatWithValue]):
         Labelled.__init__(self, name, sub_type)
         self.action_type = action_type
@@ -85,13 +96,13 @@ class Action(Labelled):
 
 
 class Attack(Action):
-    def __init__(self, name: str, action_type: ActionType, sub_type: str, description: List[str],
+    def __init__(self, name: str, action_type: ActionCost, sub_type: str, description: List[str],
                  stat_blocks: List[StatWithValue]):
         super().__init__(name, action_type, sub_type, description, stat_blocks)
 
 
 class Spell(Action):
-    def __init__(self, name: str, action_type: ActionType, sub_type: str, description: List[str],
+    def __init__(self, name: str, action_type: ActionCost, sub_type: str, description: List[str],
                  stat_blocks: List[StatWithValue], spell_duration: CastingDuration):
         super().__init__(name, action_type, sub_type, description, stat_blocks)
         self.spell_duration = spell_duration
@@ -104,7 +115,11 @@ class Card(Labelled):
     description: List[str] = []
     grants_actions: List[Action]
     stat_blocks: List[StatWithValue] = []
+    level_requirement: int = 1
     special_quote: str = None
+    feature_image: Image = None
+    full_image: Image = None
+
 
     def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
                  stat_blocks: List[StatWithValue], **kwargs):
@@ -114,17 +129,18 @@ class Card(Labelled):
         self.description = description
         self.grants_actions = grants_actions
         self.stat_blocks = stat_blocks
+        self.level_requirement = kwargs.get("level_requirement", 1)
         self.special_quote = kwargs.get("special_quote", None)
+        self.feature_image = kwargs.get("feature_image", Image())
         self.full_image = kwargs.get("full_image", None)
 
 
-"""
+
 class ActionCard(Action, Card):
-    def __init__(self, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
-                 stat_blocks: List[StatWithValue], action_type: ActionType):
-        Card.__init__(self, name, sub_type, flavour, description, grants_actions, stat_blocks)
-        Action.__init__(self, name, action_type, sub_type, description, stat_blocks)
-"""
+    def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
+                 stat_blocks: List[StatWithValue], action_cost: ActionCost, **kwargs):
+        Card.__init__(self, ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks, **kwargs)
+        Action.__init__(self, name, action_cost, sub_type, description, stat_blocks)
 
 
 class ClassCard(Card):
@@ -135,9 +151,9 @@ class ClassCard(Card):
 
 class AttackCard(Attack, Card):
     def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
-                 stat_blocks: List[StatWithValue], action_type: ActionType):
+                 stat_blocks: List[StatWithValue], action_type: ActionCost, **kwargs):
         Attack.__init__(self, name, action_type, sub_type, description, stat_blocks)
-        Card.__init__(self, ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks)
+        Card.__init__(self, ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks, **kwargs)
 
 
 class DefenceCard(Card):
@@ -148,15 +164,15 @@ class DefenceCard(Card):
 
 class SpellCard(Spell, Card):
     def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
-                 stat_blocks: List[StatWithValue], action_type: ActionType, spell_duration: CastingDuration):
-        Card.__init__(self, ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks)
+                 stat_blocks: List[StatWithValue], action_type: ActionCost, spell_duration: CastingDuration, **kwargs):
+        Card.__init__(self, ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks, **kwargs)
         Spell.__init__(self, name, action_type, sub_type, description, stat_blocks, spell_duration)
 
 
 class CantripCard(SpellCard):
     def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
-                 stat_blocks: List[StatWithValue], action_type: ActionType, spell_duration: CastingDuration):
-        super().__init__(ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks, action_type, spell_duration)
+                 stat_blocks: List[StatWithValue], action_type: ActionCost, spell_duration: CastingDuration, **kwargs):
+        super().__init__(ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks, action_type, spell_duration, **kwargs)
 
 
 class AbilityCard(Card):
@@ -169,15 +185,15 @@ class WeaponCard(Card):
     ammo_type: str
 
     def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
-                 stat_blocks: List[StatWithValue], ammo_type: str = None):
-        super().__init__(ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks)
+                 stat_blocks: List[StatWithValue], ammo_type: str = None, **kwargs):
+        super().__init__(ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks, **kwargs)
         self.ammo_type = ammo_type
 
 
 class AmmunitionCard(Card):
     def __init__(self, ability_requirement: AbilityRequirement, name: str, sub_type: str, flavour: str, description: List[str], grants_actions: List[Action],
-                 stat_blocks: List[StatWithValue]):
-        super().__init__(ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks)
+                 stat_blocks: List[StatWithValue], **kwargs):
+        super().__init__(ability_requirement, name, sub_type, flavour, description, grants_actions, stat_blocks, **kwargs)
 
 
 martial_prowess = ClassCard(
@@ -217,7 +233,7 @@ basic_attack = AttackCard(
         StatWithValue("To-hit", "+1"),
         StatWithValue("Damage", "1d3", "NL")
     ],
-    ActionType.ACTION_1
+    ActionCost(action=1)
 )
 
 heavy_wooden_shield = DefenceCard(
@@ -254,7 +270,7 @@ sturdy_shield = WeaponCard(
     ], [
         Attack(
             "Shield Bash",
-            ActionType.ACTION_1,
+            ActionCost(action=1),
             "melee",
             [],
             [
@@ -320,7 +336,7 @@ sunder = AttackCard(
         StatWithValue("CMB", "+1"),
         StatWithValue("CMD", "11")
     ],
-    ActionType.ACTION_1
+    ActionCost(action=1)
 )
 
 opportune_combatant = AbilityCard(
@@ -333,7 +349,7 @@ opportune_combatant = AbilityCard(
     ],[
         Attack(
             "Attack of Opportunity",
-            ActionType.REACTION_1,
+            ActionCost(reaction=1),
             "melee",
             [
                 "Make an Attack with an Action cost of Standard or less granted by in-play cards (other than this one)"
@@ -358,7 +374,7 @@ double_swing = AttackCard(
     [
         StatWithValue("To-hit", "+2/+0")
     ],
-    ActionType.ACTIONS_2
+    ActionCost(action=2)
 )
 
 two_weapon_fighting = AttackCard(
@@ -374,7 +390,7 @@ two_weapon_fighting = AttackCard(
     [
         StatWithValue("To-hit", "+2/+0")
     ],
-    ActionType.ACTIONS_2
+    ActionCost(action=2)
 )
 
 disarm = AttackCard(
@@ -392,7 +408,7 @@ disarm = AttackCard(
                         StatWithValue("CMD", "11")
 
                     ],
-    ActionType.ACTION_1
+    ActionCost(action=1)
 )
 
 power_attack = AbilityCard(
@@ -424,7 +440,7 @@ acid_splash = CantripCard(
         StatWithValue("Damage", "1d3", "Acid"),
         StatWithValue("Range", "25", "FT")
     ],
-    ActionType.ACTION_1,
+    ActionCost(action=1),
     CastingDuration.INSTANTANEOUS
 )
 combat_expertise = AbilityCard(
@@ -454,7 +470,7 @@ bonus_arcane_power = AbilityCard(
     [
         Spell(
             "Arcane Specialism: Evocation",
-            ActionType.ACTION_1,
+            ActionCost(action=1),
             "evocation",
             [
                 "Cast the Spell attached to this card. When you discard the Spell, also discard this card"
@@ -476,7 +492,7 @@ bonded_object = AttackCard(
     ],
     [],
     [],
-    ActionType.ACTION_1
+    ActionCost(action=1)
 )
 
 shield_spell = SpellCard(
@@ -493,7 +509,7 @@ shield_spell = SpellCard(
         StatWithValue("AC", "+4"),
         StatWithValue("Duration", "10", "rounds")
     ],
-    ActionType.ACTION_1,
+    ActionCost(action=1),
     CastingDuration.ROUNDS
 )
 
@@ -560,7 +576,7 @@ force_missile = AbilityCard(
     [
         Spell(
             "Magic Missile",
-            ActionType.ACTION_1,
+            ActionCost(action=1),
             "evocation",
             [
                 "The effects and Stats of this Spell are per the attached Spell card with the name Magic Missile"
@@ -570,7 +586,7 @@ force_missile = AbilityCard(
         )
     ],
     [],
-    full_image=True
+    feature_image=None
 )
 
 channel_positive_energy = AbilityCard(
@@ -584,7 +600,7 @@ channel_positive_energy = AbilityCard(
     [
         Action(
             "Channel Positive Energy",
-            ActionType.ACTION_1,
+            ActionCost(action=1),
             "supernatural",
             [
                 "You infuse living creatures in the area with positive energy, restoring their health"
@@ -596,7 +612,7 @@ channel_positive_energy = AbilityCard(
         ),
         Action(
             "Channel Positive Energy",
-            ActionType.ACTION_1,
+            ActionCost(action=1),
             "supernatural",
             [
                 "You blast undead creatures in the area with positive energy, depleting their unlife"
@@ -610,7 +626,7 @@ channel_positive_energy = AbilityCard(
     [
         StatWithValue("Uses", "□ □ □ □ □ □ □ □")
     ],
-    full_image=True
+    feature_image=None
 )
 
 magic_missile_1 = SpellCard(
@@ -625,7 +641,7 @@ magic_missile_1 = SpellCard(
         StatWithValue("Range", "100", "ft"),
         StatWithValue("Damage", "1d4+1", "Force")
     ],
-    ActionType.ACTION_1,
+    ActionCost(action=1),
     CastingDuration.INSTANTANEOUS
 )
 
@@ -643,7 +659,7 @@ flare = CantripCard(
         StatWithValue("Save", "DC11", "Fort"),
         StatWithValue("Duration", "10", "rounds")
     ],
-    ActionType.ACTION_1,
+    ActionCost(action=1),
     CastingDuration.ROUNDS
 )
 
@@ -659,7 +675,7 @@ mage_hand = CantripCard(
     [
         StatWithValue("Range", "25", "ft")
     ],
-    ActionType.ACTION_1,
+    ActionCost(action=1),
     CastingDuration.CONCENTRATION
 )
 
