@@ -1,7 +1,7 @@
 import codecs
 import re
 import cards
-from typing import List, Union
+from typing import List, Union, Iterable
 
 from prettierfier import prettify_html
 
@@ -13,7 +13,7 @@ dice_re = re.compile(r'(\d+)d(\d+)([+-]\d+)')
 def get_all_cards():
     return sorted([getattr(cards, name) for name in dir(cards) if isinstance(getattr(cards, name), cards.Card)], key=lambda c: c.label_type())
 
-def generate(cards_to_generate: List[cards.Card]) -> BeautifulSoup:
+def generate(cards_to_generate: Iterable[cards.Card]) -> BeautifulSoup:
     soup = BeautifulSoup()
     html = Tag(name="html")
     soup.append(html)
@@ -32,44 +32,10 @@ def generate(cards_to_generate: List[cards.Card]) -> BeautifulSoup:
     for card in cards_to_generate:
         body.append(generate_card(card))
 
-    """
-    body.append(generate_card(cards.martial_prowess))
-    body.append(generate_card(cards.spontaneous_healing))
-    body.append(generate_card(cards.basic_attack))
-    body.append(generate_card(cards.heavy_wooden_shield))
-    body.append(generate_card(cards.chain_shirt))
-    body.append(generate_card(cards.sturdy_shield))
-    body.append(generate_card(cards.greataxe))
-    body.append(generate_card(cards.blowgun))
-    body.append(generate_card(cards.feathered_dart))
-    body.append(generate_card(cards.sunder))
-    body.append(generate_card(cards.opportune_combatant))
-    body.append(generate_card(cards.double_swing))
-    body.append(generate_card(cards.two_weapon_fighting))
-    body.append(generate_card(cards.disarm))
-    body.append(generate_card(cards.power_attack))
-    body.append(generate_card(cards.combat_expertise))
-    body.append(generate_card(cards.acid_splash))
-    body.append(generate_card(cards.bonus_arcane_power))
-    body.append(generate_card(cards.bonded_object))
-    body.append(generate_card(cards.shield_spell))
-    body.append(generate_card(cards.defensive_training))
-    body.append(generate_card(cards.reckless_warrior))
-    body.append(generate_card(cards.prepared_spellcaster))
-    body.append(generate_card(cards.spontaneous_spellcaster))
-    body.append(generate_card(cards.force_missile))
-    body.append(generate_card(cards.channel_positive_energy))
-    body.append(generate_card(cards.magic_missile_1))
-    body.append(generate_card(cards.flare))
-    body.append(generate_card(cards.mage_hand))
-    body.append(generate_card(cards.improved_initiative_ability))
-    body.append(generate_card(cards.improved_initiative_class))
-    """
-
     return soup
 
 
-def generate_header(headable_thing: Union[cards.Card, cards.Action]) -> Tag:
+def generate_header(headable_thing: cards.Labelled) -> Tag:
     header = Tag(name="header", attrs={'data-type': headable_thing.label_type()})
     h1 = Tag(name="h1")
     h1.append(NavigableString(headable_thing.name))
@@ -140,7 +106,7 @@ def generate_footer(card: cards.Card) -> Tag:
     h3 = Tag(name="h3", attrs={'class': 'level-requirement'})
     h3.append(NavigableString(str(card.level_requirement)))
     footer.append(h3)
-    if isinstance(card, cards.WeaponCard) and card.ammo_type is not None:
+    if card.ammo_type is not None:
         aside = Tag(name="aside", attrs={"class": "ammunition"})
         aside.append(NavigableString(card.ammo_type))
         footer.append(aside)
@@ -178,7 +144,7 @@ def generate_card(card: cards.Card):
     article.append(generate_footer(card))
     return article
 
-def generate_card_folio(cards_to_generate: List[cards.Card]):
+def generate_card_folio(cards_to_generate: Iterable[cards.Card]):
     soup = generate(cards_to_generate)
 
     print(soup.prettify())

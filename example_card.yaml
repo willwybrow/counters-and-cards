@@ -16,7 +16,9 @@ cards:
     stat-blocks:
       - name: To-hit
         value: +2/+0
-        unit: none
+      - name: Damage
+        value: 3d8
+        unit: P
     granted-actions:
       - name: Granted Action
         type: attack
