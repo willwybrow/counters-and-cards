@@ -87,20 +87,20 @@ class Labelled(Protocol):
         raise NotImplementedError()
 
 class Action:
-    action_type: ActionCost
+    action_cost: ActionCost
 
     def __init__(self,
                  name: str,
                  type: str,
                  sub_type: str,
-                 action_type: ActionCost,
+                 action_cost: ActionCost,
                  description: List[str],
                  stat_blocks: List[StatWithValue],
                  casting_duration: CastingDuration=None):
         self.name = name
         self.type = type
         self.sub_type = sub_type
-        self.action_type = action_type
+        self.action_cost = action_cost
         self.sub_type = sub_type
         self.description = description
         self.stat_blocks = stat_blocks

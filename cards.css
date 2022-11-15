@@ -365,7 +365,7 @@ article.playing-card[data-ability-requirement=any]>header:first-child:before {
     color: grey;
 }
 
-article.playing-card>header>aside.action-type {
+article.playing-card>header>aside.action-cost {
 	left: 0;
 	bottom: -8pt;
 	background: linear-gradient(0deg,Goldenrod,Gold,PaleGoldenrod,Goldenrod);

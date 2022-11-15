@@ -40,9 +40,9 @@ def generate_header(headable_thing: cards.Labelled) -> Tag:
     h1 = Tag(name="h1")
     h1.append(NavigableString(headable_thing.name))
     header.append(h1)
-    if hasattr(headable_thing, 'action_type'):
-        aside = Tag(name="aside", attrs={'class': 'action-type'})
-        aside.append(NavigableString(headable_thing.action_type.__str__()))
+    if getattr(headable_thing, 'action_cost') is not None:
+        aside = Tag(name="aside", attrs={'class': 'action-cost'})
+        aside.append(NavigableString(headable_thing.action_cost.__str__()))
         header.append(aside)
     if hasattr(headable_thing, 'spell_duration'):
         aside = Tag(name="aside", attrs={'class': 'spell-duration'})
@@ -97,7 +97,7 @@ def generate_description_line(description_line: str) -> Tag:
             p_description.append(strong_modifier)
             strong_modifier.append(NavigableString(text_segment))
         else:
-            p_description_string = NavigableString(description_line)
+            p_description_string = NavigableString(text_segment)
             p_description.append(p_description_string)
     return p_description
 
